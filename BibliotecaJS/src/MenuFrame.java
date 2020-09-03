@@ -12,6 +12,11 @@ import java.awt.Font;
 import java.awt.Button;
 import java.awt.Label;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Window.Type;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuFrame extends JFrame {
 
@@ -37,103 +42,79 @@ public class MenuFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuFrame() {
+		setResizable(false);
+		setType(Type.POPUP);
 		setForeground(Color.LIGHT_GRAY);
 		setTitle("Biblioteca J.S");
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 693, 512);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.GRAY);
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(0, 0, 204, 473);
+		panel.setBackground(new Color(51, 102, 204));
+		panel.setBounds(0, 0, 687, 145);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		Button button_3 = new Button("Agregar");
-		button_3.setForeground(Color.WHITE);
-		button_3.setBackground(Color.DARK_GRAY);
-		button_3.setActionCommand("Salir");
-		button_3.setBounds(10, 233, 184, 35);
-		panel.add(button_3);
-		
-		Label label = new Label("Opciones Admin:");
-		label.setAlignment(Label.CENTER);
-		label.setForeground(Color.WHITE);
-		label.setBounds(10, 205, 184, 22);
-		panel.add(label);
-		
-		Label label_1 = new Label("Opciones Bibliotecario:");
-		label_1.setAlignment(Label.CENTER);
-		label_1.setForeground(Color.WHITE);
-		label_1.setBounds(10, 96, 184, 22);
-		panel.add(label_1);
-		
-		Button button_4 = new Button("Agregar");
-		button_4.setForeground(Color.WHITE);
-		button_4.setBackground(Color.DARK_GRAY);
-		button_4.setActionCommand("Salir");
-		button_4.setBounds(10, 123, 184, 35);
-		panel.add(button_4);
-		
-		Button button_5 = new Button("Consultar");
-		button_5.setForeground(Color.WHITE);
-		button_5.setBackground(Color.DARK_GRAY);
-		button_5.setActionCommand("Salir");
-		button_5.setBounds(10, 164, 184, 35);
-		panel.add(button_5);
-		
-		Button button = new Button("Modificar");
-		button.setForeground(Color.WHITE);
-		button.setBackground(Color.DARK_GRAY);
-		button.setActionCommand("Salir");
-		button.setBounds(10, 274, 184, 35);
-		panel.add(button);
-		
-		Button button_2 = new Button("Consultar");
-		button_2.setForeground(Color.WHITE);
-		button_2.setBackground(Color.DARK_GRAY);
-		button_2.setActionCommand("Salir");
-		button_2.setBounds(10, 315, 184, 35);
-		panel.add(button_2);
-		
-		Button button_1 = new Button("Agregar");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				do_button_1_actionPerformed(e);
-			}
-		});
-		button_1.setForeground(Color.WHITE);
-		button_1.setBackground(Color.DARK_GRAY);
-		button_1.setActionCommand("Salir");
-		button_1.setBounds(10, 55, 184, 35);
-		panel.add(button_1);
-		
-		Button button_6 = new Button("Salir");
-		button_6.setForeground(Color.WHITE);
-		button_6.setBackground(Color.DARK_GRAY);
-		button_6.setActionCommand("Salir");
-		button_6.setBounds(10, 428, 184, 35);
-		panel.add(button_6);
+		Label label_4 = new Label("Aplicaci\u00F3n de Almacenamiento de Archivos.");
+		label_4.setForeground(Color.WHITE);
+		label_4.setAlignment(Label.CENTER);
+		label_4.setBounds(170, 81, 348, 22);
+		panel.add(label_4);
 		
 		Label label_2 = new Label("Biblioteca J.S");
+		label_2.setBounds(160, 49, 348, 37);
+		panel.add(label_2);
 		label_2.setAlignment(Label.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 25));
 		label_2.setForeground(Color.WHITE);
-		label_2.setBounds(10, 10, 184, 22);
-		panel.add(label_2);
 		
-		Button button_7 = new Button("Iniciar Sesi\u00F3n");
-		button_7.setForeground(Color.WHITE);
-		button_7.setBackground(Color.DARK_GRAY);
-		button_7.setActionCommand("Salir");
-		button_7.setBounds(10, 387, 184, 35);
-		panel.add(button_7);
-	}
-	protected void do_button_1_actionPerformed(ActionEvent e) {
+		Label label_login = new Label("Login");
+		label_login.setForeground(Color.WHITE);
+		label_login.setFont(new Font("Dialog", Font.PLAIN, 17));
+		label_login.setAlignment(Label.CENTER);
+		label_login.setBounds(623, 113, 54, 22);
+		panel.add(label_login);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setLayout(null);
+		panel_5.setBackground(new Color(51, 102, 204));
+		panel_5.setBounds(0, 354, 687, 129);
+		contentPane.add(panel_5);
+		
+		Button boton_buscar = new Button("Buscar");
+		boton_buscar.setBounds(10, 182, 125, 125);
+		contentPane.add(boton_buscar);
+		boton_buscar.setBackground(new Color(51, 102, 204));
+		boton_buscar.setForeground(Color.WHITE);
+		
+		Button boton_eliminar = new Button("Eliminar");
+		boton_eliminar.setBounds(552, 182, 125, 125);
+		contentPane.add(boton_eliminar);
+		boton_eliminar.setForeground(Color.WHITE);
+		boton_eliminar.setBackground(new Color(51, 102, 204));
+		
+		Button boton_agregar = new Button("Agregar");
+		boton_agregar.setForeground(Color.WHITE);
+		boton_agregar.setBackground(new Color(51, 102, 204));
+		boton_agregar.setBounds(281, 182, 125, 125);
+		contentPane.add(boton_agregar);
+		
+		Button boton_consultas = new Button("Consultas");
+		boton_consultas.setForeground(Color.WHITE);
+		boton_consultas.setBackground(new Color(51, 102, 204));
+		boton_consultas.setBounds(145, 182, 125, 125);
+		contentPane.add(boton_consultas);
+		
+		Button boton_modificar = new Button("Modificar");
+		boton_modificar.setForeground(Color.WHITE);
+		boton_modificar.setBackground(new Color(51, 102, 204));
+		boton_modificar.setBounds(416, 182, 125, 125);
+		contentPane.add(boton_modificar);
 	}
 }
