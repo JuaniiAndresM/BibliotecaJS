@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MenuFrame extends JFrame {
+	Login login = new Login();
 
 	private JPanel contentPane;
 
@@ -26,6 +27,7 @@ public class MenuFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -74,12 +76,17 @@ public class MenuFrame extends JFrame {
 		label_2.setFont(new Font("Arial", Font.PLAIN, 25));
 		label_2.setForeground(Color.WHITE);
 		
-		Label label_login = new Label("Login");
-		label_login.setForeground(Color.WHITE);
-		label_login.setFont(new Font("Dialog", Font.PLAIN, 17));
-		label_login.setAlignment(Label.CENTER);
-		label_login.setBounds(623, 113, 54, 22);
-		panel.add(label_login);
+		Button boton_login = new Button("Login");
+		boton_login.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.setVisible(true);
+			}
+		});
+		boton_login.setBackground(new Color(51, 102, 204));
+		boton_login.setFont(new Font("Dialog", Font.PLAIN, 17));
+		boton_login.setForeground(Color.WHITE);
+		boton_login.setBounds(607, 113, 70, 22);
+		panel.add(boton_login);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
