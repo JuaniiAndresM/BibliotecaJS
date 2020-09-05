@@ -3,6 +3,7 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,9 @@ public class BuscarController {
 
     @FXML
     private JFXButton menu_consultar;
+    
+    @FXML
+    private JFXButton menu_inicio;
 
     @FXML
     private JFXButton menu_agregar;
@@ -68,18 +72,28 @@ public class BuscarController {
     private JFXButton btn_buscar;
 
     @FXML
-    void buscar(ActionEvent event) {
+    public void buscar(ActionEvent event) {
     }
 
     @FXML
-    void cerrar(ActionEvent event) {
-
-    }
+    public void cerrar(ActionEvent event) {
+		 Platform.exit();
+	}
     
     LoginController logincontroller = new LoginController();
 
     @FXML
-    void login(ActionEvent event) throws IOException {
+    public void menu_inicio(ActionEvent event) throws IOException {
+		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
+		
+		Scene scene = new Scene(menu);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
+    
+    @FXML
+    public void login(ActionEvent event) throws IOException {
 		boolean sesion = logincontroller.VerificarSesion();
 		
 		if(sesion == true) {
@@ -98,7 +112,7 @@ public class BuscarController {
 	}
 
     @FXML
-    void menu_agregar(ActionEvent event) throws IOException {
+    public void menu_agregar(ActionEvent event) throws IOException {
 		Parent menu_agregar = FXMLLoader.load(getClass().getResource("Agregar.fxml"));
 		
 		Scene scene = new Scene(menu_agregar);
@@ -108,7 +122,7 @@ public class BuscarController {
     }
 
     @FXML
-    void menu_buscar(ActionEvent event) throws IOException {
+    public void menu_buscar(ActionEvent event) throws IOException {
 		Parent menu_buscar = FXMLLoader.load(getClass().getResource("Buscar.fxml"));
 		
 		Scene scene = new Scene(menu_buscar);
@@ -118,23 +132,33 @@ public class BuscarController {
     }
 
     @FXML
-    void menu_cerrarsesion(ActionEvent event) {
+    public void menu_cerrarsesion(ActionEvent event) {
 
     }
 
     @FXML
-    void menu_consultar(ActionEvent event) {
+    public void menu_consultar(ActionEvent event) {
 
     }
 
     @FXML
-    void menu_eliminar(ActionEvent event) {
-
-    }
+    public void menu_eliminar(ActionEvent event) throws IOException {
+		Parent menu_eliminar = FXMLLoader.load(getClass().getResource("Eliminar.fxml"));
+		
+		Scene scene = new Scene(menu_eliminar);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
 
     @FXML
-    void menu_modificar(ActionEvent event) {
-
-    }
+    public void menu_modificar(ActionEvent event) throws IOException {
+		Parent agregar = FXMLLoader.load(getClass().getResource("ModificarMenu.fxml"));
+		
+		Scene scene = new Scene(agregar);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
 
 }

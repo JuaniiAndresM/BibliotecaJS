@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application{
 
@@ -20,6 +21,7 @@ public class Main extends Application{
 		
 		Scene scene = new Scene(root);
 		
+		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.setTitle("BibliotecaJS");
 		primaryStage.setScene(scene);
 		primaryStage.show();

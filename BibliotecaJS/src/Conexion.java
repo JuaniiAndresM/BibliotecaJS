@@ -12,7 +12,7 @@ public class Conexion {
 public Connection conectarConBase() {
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		nombreBaseString = "jdbc:mysql://localhost:3306/"+nombreBaseString;
+		nombreBaseString = "jdbc:mysql://localhost:3306/"+nombreBaseString+"?useTimezone=true&serverTimezone=UTC";
 		conector = DriverManager.getConnection(nombreBaseString,usuarioString,passwordString);
 		if (conector != null)
 		JOptionPane.showMessageDialog(null, "Conexión Exitosa");

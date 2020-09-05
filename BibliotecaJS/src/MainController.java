@@ -4,10 +4,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 public class MainController {
@@ -35,7 +38,7 @@ public class MainController {
 	// Event Listener on Button[#btn_buscar].onAction
 	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
-		Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		
 		Scene scene = new Scene(menu);
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -66,13 +69,23 @@ public class MainController {
 	}
 	// Event Listener on Button[#btn_modificar].onAction
 	@FXML
-	public void menu_modificar(ActionEvent event) {
-		boolean sesion = logincontroller.VerificarSesion();
-		System.out.println(sesion);
+	public void menu_modificar(ActionEvent event) throws IOException {
+		Parent modificar = FXMLLoader.load(getClass().getResource("ModificarMenu.fxml"));
+		
+		Scene scene = new Scene(modificar);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
 	// Event Listener on Button[#btn_eliminar].onAction
 	@FXML
-	public void menu_eliminar(ActionEvent event) {
+	public void menu_eliminar(ActionEvent event) throws IOException {
+		Parent menu_eliminar = FXMLLoader.load(getClass().getResource("Eliminar.fxml"));
+		
+		Scene scene = new Scene(menu_eliminar);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
@@ -98,5 +111,6 @@ public class MainController {
 	public void menu_cerrarsesion(ActionEvent event) {
 	}
 	public void cerrar(ActionEvent event) {
+		 Platform.exit();
 	}
 }

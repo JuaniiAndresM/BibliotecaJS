@@ -1,9 +1,11 @@
 import java.io.IOException;
+import java.sql.Connection;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +13,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController {
 
     @FXML
     private JFXButton btn_atras;
-
+	@FXML
+	private Text lbl_error;
     @FXML
     private Button btn_login;
 
@@ -42,8 +46,8 @@ public class LoginController {
 
     @FXML
     public void cerrar(ActionEvent event) {
-
-    }
+		 Platform.exit();
+	}
     
     boolean sesion = false;
     
@@ -65,9 +69,9 @@ public class LoginController {
                 window.show();
         }
         else {
-            System.out.println("Usuario o contraseña incorrecta.");
+            lbl_error.setVisible(true);
         }
-        /*
+        System.out.println("Conectando con la Base de Datos...");
         Conexion con = new Conexion();
 
         Connection conexionConnection = con.conectarConBase();
@@ -83,7 +87,6 @@ public class LoginController {
         } catch(Exception e){
             System.out.println("Error al Conectar.");
         }
-        */
 
     }
     public boolean VerificarSesion(){
