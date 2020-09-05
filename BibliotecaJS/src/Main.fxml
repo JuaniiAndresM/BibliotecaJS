@@ -30,7 +30,7 @@
                   </Pane>
                   <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
-                        <JFXButton fx:id="btn_consultar" layoutX="4.0" layoutY="57.0" onAction="#consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
+                        <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -42,7 +42,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_agregar" layoutX="4.0" layoutY="100.0" onAction="#agregar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE">
+                        <JFXButton fx:id="menu_agregar" layoutX="4.0" layoutY="143.0" onAction="#menu_agregar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -54,7 +54,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_modificar" layoutX="4.0" layoutY="143.0" onAction="#modificar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Modificar" textFill="WHITE">
+                        <JFXButton fx:id="menu_modificar" layoutX="4.0" layoutY="186.0" onAction="#menu_modificar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Modificar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -66,7 +66,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_eliminar" layoutX="4.0" layoutY="186.0" onAction="#eliminar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE">
+                        <JFXButton fx:id="menu_eliminar" layoutX="4.0" layoutY="229.0" onAction="#menu_eliminar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -78,7 +78,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -90,7 +90,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_cerrarsesion" layoutX="4.0" layoutY="288.0" onAction="#cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="288.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -102,7 +102,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_buscar" layoutX="4.0" layoutY="14.0" onAction="#buscar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE">
+                        <JFXButton fx:id="menu_buscar" layoutX="4.0" layoutY="57.0" onAction="#menu_buscar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -110,6 +110,18 @@
                                  </cursor>
                                  <image>
                                     <Image url="@../../../../Desktop/Programacion/Buscar.PNG" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_inicio" layoutX="4.0" layoutY="14.0" onAction="#menu_inicio" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Inicio" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@../../../../Desktop/Programacion/Inicio.png" />
                                  </image>
                               </ImageView>
                            </graphic>

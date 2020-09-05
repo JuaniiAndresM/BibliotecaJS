@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane prefHeight="483.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
          <items>
@@ -25,37 +25,17 @@
                            </font>
                         </Label>
                         <Label layoutX="366.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
+                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Button layoutX="715.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label layoutX="417.0" layoutY="122.0" text="Buscar" textFill="#aeaeae">
+                  <Label layoutX="419.0" layoutY="107.0" text="Buscar" textFill="#aeaeae">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="610.0" layoutY="432.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
                   <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
-                        <Button layoutX="4.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <image>
-                                    <Image url="@../../../../Desktop/Programacion/Buscar.PNG" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="57.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
+                        <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -66,11 +46,8 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="100.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE">
+                        </JFXButton>
+                        <JFXButton fx:id="menu_agregar" layoutX="4.0" layoutY="143.0" onAction="#menu_agregar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -81,11 +58,8 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="143.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Modificar" textFill="WHITE">
+                        </JFXButton>
+                        <JFXButton fx:id="menu_modificar" layoutX="4.0" layoutY="186.0" onAction="#menu_modificar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Modificar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -96,11 +70,8 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="186.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE">
+                        </JFXButton>
+                        <JFXButton fx:id="menu_eliminar" layoutX="4.0" layoutY="229.0" onAction="#menu_eliminar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -111,11 +82,8 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="331.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        </JFXButton>
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -126,11 +94,8 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="4.0" layoutY="288.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        </JFXButton>
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="288.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -141,21 +106,43 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_buscar" layoutX="4.0" layoutY="57.0" onAction="#menu_buscar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@../../../../Desktop/Programacion/Buscar.PNG" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_inicio" layoutX="4.0" layoutY="14.0" onAction="#menu_inicio" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Inicio" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@../../../../Desktop/Programacion/Inicio.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </Pane>
-                  <TextField layoutX="215.0" layoutY="174.0" prefHeight="42.0" prefWidth="237.0" promptText="Titulo" />
-                  <TextField layoutX="215.0" layoutY="228.0" prefHeight="42.0" prefWidth="237.0" promptText="Autor" />
-                  <TextField layoutX="215.0" layoutY="283.0" prefHeight="42.0" prefWidth="237.0" promptText="Tipo de Material" />
-                  <TextField layoutX="215.0" layoutY="337.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de la Publicación" />
-                  <TextField layoutX="215.0" layoutY="390.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
-                  <TextField layoutX="469.0" layoutY="174.0" prefHeight="42.0" prefWidth="237.0" promptText="Editorial" />
-                  <TextField layoutX="469.0" layoutY="228.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo" />
-                  <TextField layoutX="469.0" layoutY="283.0" prefHeight="42.0" prefWidth="237.0" promptText="Páginas" />
-                  <TextField layoutX="469.0" layoutY="337.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio" />
+                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" layoutX="224.0" layoutY="160.0" prefHeight="42.0" prefWidth="237.0" promptText="Titulo" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_autor" focusColor="#0077ff" layoutX="224.0" layoutY="214.0" prefHeight="42.0" prefWidth="237.0" promptText="Autor" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_material" focusColor="#0077ff" layoutX="224.0" layoutY="269.0" prefHeight="42.0" prefWidth="237.0" promptText="Tipo de Material" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_publicacion" focusColor="#0077ff" layoutX="224.0" layoutY="323.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de la Publicación" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_caducidad" focusColor="#0077ff" layoutX="224.0" layoutY="376.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de Caducidad" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_editorial" focusColor="#0077ff" layoutX="478.0" layoutY="160.0" prefHeight="42.0" prefWidth="237.0" promptText="Editorial" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_tomo" focusColor="#0077ff" layoutX="478.0" layoutY="214.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_paginas" focusColor="#0077ff" layoutX="478.0" layoutY="269.0" prefHeight="42.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" layoutX="478.0" layoutY="323.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio" unFocusColor="#ababab" />
+                  <JFXButton fx:id="btn_buscar" layoutX="426.0" layoutY="425.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
                </children>
             </AnchorPane>
          </items>

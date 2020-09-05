@@ -14,25 +14,35 @@ public class MainController {
 	LoginController logincontroller = new LoginController();
 	
 	@FXML
-	private Button btn_buscar;
+	private Button menu_buscar;
 	@FXML
-	private Button btn_consultar;
+	private Button menu_inicio;
 	@FXML
-	private Button btn_agregar;
+	private Button menu_consultar;
 	@FXML
-	private Button btn_modificar;
+	private Button menu_agregar;
 	@FXML
-	private Button btn_eliminar;
+	private Button menu_modificar;
 	@FXML
-	private Button btn_login;
+	private Button menu_eliminar;
 	@FXML
-	private Button btn_cerrarsesion;
+	private Button menu_login;
+	@FXML
+	private Button menu_cerrarsesion;
 	@FXML
 	private Button btn_cerrar;
 
 	// Event Listener on Button[#btn_buscar].onAction
 	@FXML
-	public void buscar(ActionEvent event) throws IOException {
+	public void menu_inicio(ActionEvent event) throws IOException {
+		Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		
+		Scene scene = new Scene(menu);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
+	public void menu_buscar(ActionEvent event) throws IOException {
 		Parent buscar = FXMLLoader.load(getClass().getResource("Buscar.fxml"));
 		
 		Scene scene = new Scene(buscar);
@@ -42,11 +52,11 @@ public class MainController {
 	}
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
-	public void consultar(ActionEvent event) {
+	public void menu_consultar(ActionEvent event) {
 	}
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML
-	public void agregar(ActionEvent event) throws IOException {
+	public void menu_agregar(ActionEvent event) throws IOException {
 		Parent agregar = FXMLLoader.load(getClass().getResource("Agregar.fxml"));
 		
 		Scene scene = new Scene(agregar);
@@ -56,13 +66,13 @@ public class MainController {
 	}
 	// Event Listener on Button[#btn_modificar].onAction
 	@FXML
-	public void modificar(ActionEvent event) {
+	public void menu_modificar(ActionEvent event) {
 		boolean sesion = logincontroller.VerificarSesion();
 		System.out.println(sesion);
 	}
 	// Event Listener on Button[#btn_eliminar].onAction
 	@FXML
-	public void eliminar(ActionEvent event) {
+	public void menu_eliminar(ActionEvent event) {
 	}
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
@@ -85,7 +95,7 @@ public class MainController {
 	}
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
-	public void cerrarsesion(ActionEvent event) {
+	public void menu_cerrarsesion(ActionEvent event) {
 	}
 	public void cerrar(ActionEvent event) {
 	}

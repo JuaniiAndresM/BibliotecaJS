@@ -31,7 +31,7 @@ public class LoginController {
     private JFXPasswordField lbl_contraseña;
 
     @FXML
-    void atras(ActionEvent event) throws IOException {
+    public void atras(ActionEvent event) throws IOException {
     	Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
         Scene scene = new Scene(main);
@@ -41,7 +41,7 @@ public class LoginController {
     }
 
     @FXML
-    void cerrar(ActionEvent event) {
+    public void cerrar(ActionEvent event) {
 
     }
     
@@ -49,7 +49,7 @@ public class LoginController {
     
     
     @FXML
-    void login(ActionEvent event) throws IOException {
+    public void login(ActionEvent event) throws IOException {
     	String usuario = this.lbl_usuario.getText();
         String contraseña = this.lbl_contraseña.getText();
 
