@@ -18,18 +18,7 @@
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="753.0" style="-fx-background-color: white;">
                <children>
-                  <Pane layoutX="-8.0" layoutY="-7.0" prefHeight="109.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
-                     <children>
-                        <Label layoutX="378.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="366.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
-                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
-                     </children>
-                  </Pane>
-                  <Label layoutX="392.0" layoutY="107.0" text="Consultar" textFill="#aeaeae">
+                  <Label layoutX="392.0" layoutY="107.0" text="Consultar" textFill="#0077ff">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -158,6 +147,22 @@
                   <JFXTextField fx:id="field_paginas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Paginas:" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_precio" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio:" unFocusColor="#ababab" />
                   <JFXTextArea fx:id="field_notas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="210.0" layoutY="563.0" prefHeight="80.0" prefWidth="518.0" promptText="Notas:" unFocusColor="#ababab" />
+                  <Pane layoutX="-4.0" prefHeight="108.0" prefWidth="761.0" style="-fx-background-color: #0077ff;">
+                     <children>
+                        <Label layoutX="328.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="316.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
+                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
+                        <ImageView fitHeight="62.0" fitWidth="49.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
          </items>

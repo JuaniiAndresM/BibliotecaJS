@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -57,7 +60,28 @@ public class ConsultarController {
     private JFXButton menu_registrar;
 
     @FXML
-    public void consultar(ActionEvent event) throws IOException {    	
+    public void consultar(ActionEvent event) throws IOException {
+    	int codigo = Integer.parseInt(field_codigo.getText());
+    	
+    	 Conexion con = new Conexion();
+
+         Connection conexionConnection = con.conectarConBase();
+         
+         try {
+         	String buscar = "SELECT * FROM Archivos";
+         	Statement stmt = conexionConnection.createStatement();
+             ResultSet cant = stmt.executeQuery(buscar);
+             boolean encontrado = false;
+             while(cant.next() && encontrado == false) {
+             	if(codigo == (Integer.parseInt(cant.getString("codigo")))) {
+             		encontrado = true;
+             	}
+             }
+             if(encontrado == false) {
+             	lbl_error.setVisible(true);
+             }
+         }catch(Exception e) {
+         }
     	Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
 		
 		Scene scene = new Scene(consultar);
