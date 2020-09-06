@@ -14,6 +14,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.jfoenix.controls.JFXDatePicker;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -24,19 +26,19 @@ public class AgregarController {
 	@FXML
 	private Button button_agregar;
 	@FXML
-	private TextArea lbl_notas;
+	private TextArea field_notas;
 	@FXML
-	private TextField lbl_caducidad;
+	private JFXDatePicker date_caducidad;
 	@FXML
-	private TextField lbl_titulo;
+	private TextField field_titulo;
 	@FXML
-	private TextField lbl_autor;
+	private TextField field_autor;
 	@FXML
-	private TextField lbl_tipo;
+	private TextField field_material;
 	@FXML
-	private TextField lbl_publicacion;
+	private TextField field_publicacion;
 	@FXML
-	private TextField lbl_codigo;
+	private TextField field_codigo;
 	@FXML
 	private Label lbl_error;
 	@FXML
@@ -54,29 +56,29 @@ public class AgregarController {
 	@FXML
 	private Button button_login;
 	@FXML
-	private TextField lbl_editorial;
+	private TextField field_editorial;
 	@FXML
-	private TextField lbl_tomo;
+	private TextField field_tomo;
 	@FXML
-	private TextField lbl_paginas;
+	private TextField field_paginas;
 	@FXML
-	private TextField lbl_precio;
+	private TextField field_precio;
 
 	// Event Listener on Button[#button_agregar].onAction
 	@FXML
 	public void agregar(ActionEvent event) {
-		String algo = this.lbl_codigo.getText();
+		String algo = this.field_codigo.getText();
 		int codigo = Integer.parseInt(algo);
-		String titulo = this.lbl_titulo.getText();
-		String autor = this.lbl_autor.getText();
-		String tipo = this.lbl_tipo.getText();
-		String publicacion = this.lbl_publicacion.getText();
-		String caducidad = this.lbl_caducidad.getText();
-		String editorial = this.lbl_editorial.getText();
-		String tomo = this.lbl_editorial.getText();
-		int paginas = Integer.parseInt(this.lbl_paginas.getText());
-		int precio = Integer.parseInt(this.lbl_precio.getText());
-		String notas = this.lbl_notas.getText();
+		String titulo = this.field_titulo.getText();
+		String autor = this.field_autor.getText();
+		String tipo = this.field_material.getText();
+		String publicacion = this.field_publicacion.getText();
+		String caducidad = this.date_caducidad.getPromptText();
+		String editorial = this.field_editorial.getText();
+		String tomo = this.field_editorial.getText();
+		int paginas = Integer.parseInt(this.field_paginas.getText());
+		int precio = Integer.parseInt(this.field_precio.getText());
+		String notas = this.field_notas.getText();
 		
         
         Conexion con = new Conexion();
