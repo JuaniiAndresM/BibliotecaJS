@@ -19,8 +19,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController{
-	public boolean sesion = false;
-    public boolean admin = false;
+	public static boolean sesion = false;
+    public static boolean admin = false;
 
     @FXML
     private JFXButton btn_atras;
@@ -83,6 +83,9 @@ public class LoginController{
             			if(cant.getString("admin").equals("1")) {
             				setAdmin(true);
             			}
+            			else {
+            				setAdmin(false);
+            			}
             			encontrado = true;
             			setSesion(true);
             			VerificarSesion();
@@ -104,23 +107,14 @@ public class LoginController{
     }
     public void setAdmin(boolean adm) {
     	this.admin = adm;
-    	System.out.println(admin);
     }
     public void setSesion(boolean estado) {
     	this.sesion = estado;
-    	System.out.println(sesion);
     }
     public boolean VerificarAdmin() {
-    	System.out.println(admin);
     	return this.admin;
     }
     public boolean VerificarSesion(){
-    	System.out.println(sesion);
     	return this.sesion;
-    }
-    public void TestMethod() {
-    	System.out.println("Iniciado Sesion: " + sesion);
-    	System.out.println("Admin: " + admin);
-    	
     }
 }

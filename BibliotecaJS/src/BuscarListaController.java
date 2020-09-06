@@ -161,18 +161,57 @@ public class BuscarListaController implements Initializable {
 	}
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
-	public void menu_cerrarsesion(ActionEvent event) {
+	public void menu_cerrarsesion(ActionEvent event) throws IOException {
+		logincontroller.setSesion(false);
+		
+		Parent login = FXMLLoader.load(getClass().getResource("Main.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+		
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		boolean sesion = logincontroller.VerificarSesion();
+		
+		if(logincontroller.VerificarSesion() == true) {
+			if(logincontroller.VerificarAdmin() == true) {
+				menu_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+				menu_registrar.setVisible(true);
+				menu_eliminar.setVisible(true);
+				menu_agregar.setVisible(true);
+				menu_modificar.setVisible(true);
+				menu_consultar.setVisible(true);
+			}
+			else {
+				menu_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+				menu_registrar.setVisible(false);
+				menu_eliminar.setVisible(false);
+				menu_agregar.setVisible(true);
+				menu_modificar.setVisible(false);
+				menu_consultar.setVisible(true);
+				
+				menu_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+			}
+	}
+		else {
+			menu_login.setVisible(true);
+			menu_cerrarsesion.setVisible(false);
+			menu_registrar.setVisible(false);
+			menu_eliminar.setVisible(false);
+			menu_agregar.setVisible(false);
+			menu_modificar.setVisible(false);
+			menu_consultar.setVisible(false);
+		}
+		
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
 	}
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		col_codigo.setCellValueFactory(new PropertyValueFactory("asd"));
-		col_titulo.setCellValueFactory(new PropertyValueFactory("asd"));
-		col_editorial.setCellValueFactory(new PropertyValueFactory("asd"));
-		col_tipo.setCellValueFactory(new PropertyValueFactory("asd"));
-		
-	}
-
 }

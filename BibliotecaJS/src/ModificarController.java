@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,17 +10,21 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.TextArea;
 
-public class ModificarController {
+public class ModificarController implements Initializable {
 	LoginController logincontroller = new LoginController();
 	
 	@FXML
-	private Button button_modificar;
+	private JFXButton button_modificar;
 	@FXML
 	private TextArea lbl_notas;
 	@FXML
@@ -35,17 +40,21 @@ public class ModificarController {
 	@FXML
 	private TextField lbl_codigo;
 	@FXML
-	private Button menu_buscar;
+	private JFXButton menu_buscar;
 	@FXML
-	private Button menu_consultar;
+	private JFXButton menu_consultar;
 	@FXML
-	private Button menu_agregar;
+	private JFXButton menu_agregar;
 	@FXML
-	private Button menu_modificar;
+	private JFXButton menu_modificar;
 	@FXML
-	private Button menu_eliminar;
+	private JFXButton menu_eliminar;
 	@FXML
-	private Button button_login;
+	private JFXButton menu_cerrarsesion;
+	@FXML
+	private JFXButton button_login;
+	@FXML
+	private JFXButton menu_registrar;
 	@FXML
 	private TextField lbl_editorial;
 	@FXML
@@ -147,7 +156,52 @@ public class ModificarController {
 	}
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
-	public void menu_cerrarsesion(ActionEvent event) {
+	public void menu_cerrarsesion(ActionEvent event) throws IOException {
+		logincontroller.setSesion(false);
+		
+		Parent login = FXMLLoader.load(getClass().getResource("Main.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+		
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		boolean sesion = logincontroller.VerificarSesion();
+		
+		if(logincontroller.VerificarSesion() == true) {
+			if(logincontroller.VerificarAdmin() == true) {
+				button_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+				menu_registrar.setVisible(true);
+				menu_eliminar.setVisible(true);
+				menu_agregar.setVisible(true);
+				menu_modificar.setVisible(true);
+				menu_consultar.setVisible(true);
+			}
+			else {
+				button_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+				menu_registrar.setVisible(false);
+				menu_eliminar.setVisible(false);
+				menu_agregar.setVisible(true);
+				menu_modificar.setVisible(false);
+				menu_consultar.setVisible(true);
+			}
+	}
+		else {
+			button_login.setVisible(true);
+			menu_cerrarsesion.setVisible(false);
+			menu_registrar.setVisible(false);
+			menu_eliminar.setVisible(false);
+			menu_agregar.setVisible(false);
+			menu_modificar.setVisible(false);
+			menu_consultar.setVisible(false);
+		}
+		
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
