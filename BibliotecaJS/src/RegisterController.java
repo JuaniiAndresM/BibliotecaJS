@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
@@ -49,7 +50,7 @@ public class RegisterController {
     private JFXButton btn_agregar;
 
     @FXML
-    public void agregar(ActionEvent event) {
+    public void agregar(ActionEvent event) throws SQLException {
         String usuario = this.lbl_usuario.getText();
         String contraseña = this.lbl_contraseña.getText();
         boolean admin = this.check_admin.isSelected();
@@ -66,7 +67,7 @@ public class RegisterController {
             
             boolean encontrado = false;
             while(cant.next() && encontrado == false) {
-            	if(usuario.equals(cant.getString("nombre"))){
+            	if(usuario.equals(cant.getString("admin"))){
             		encontrado = true;
             		lbl_exito.setVisible(false);
             		lbl_error.setVisible(true);
@@ -102,7 +103,7 @@ public class RegisterController {
         } catch(Exception e){
             System.out.println("Error al Conectar.");
         }
-
+        conexionConnection.close();
     }
 
     @FXML

@@ -10,14 +10,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ModificarMenuController {
-	
+public class ConsultarController {
 	LoginController logincontroller = new LoginController();
+	ConsultarMenuController cmc2 = new ConsultarMenuController();
 
     @FXML
     private JFXButton btn_cerrar;
+
+    @FXML
+    private JFXTextField field_codigo;
+
+    @FXML
+    private JFXButton btn_consultar;
+
+    @FXML
+    private Text lbl_error;
 
     @FXML
     private JFXButton menu_consultar;
@@ -44,19 +54,17 @@ public class ModificarMenuController {
     private JFXButton menu_inicio;
 
     @FXML
-    private JFXTextField field_titulo;
+    private JFXButton menu_registrar;
 
     @FXML
-    private JFXButton btn_buscar;
-
-    @FXML
-    void buscar(ActionEvent event) throws IOException {
-    	Parent modificar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
+    public void consultar(ActionEvent event) throws IOException {    	
+    	Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
 		
-		Scene scene = new Scene(modificar);
+		Scene scene = new Scene(consultar);
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
+
     }
 
     @FXML

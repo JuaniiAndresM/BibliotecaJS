@@ -57,7 +57,13 @@ public class MainController {
 	}
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
-	public void menu_consultar(ActionEvent event) {
+	public void menu_consultar(ActionEvent event) throws IOException {
+		Parent menu_consultar = FXMLLoader.load(getClass().getResource("Consultar.fxml"));
+
+        Scene scene = new Scene(menu_consultar);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show(); 
 	}
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML

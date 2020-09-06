@@ -1,23 +1,30 @@
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class ModificarMenuController {
-	
+public class ConsultarMenuController implements Initializable{
 	LoginController logincontroller = new LoginController();
 
     @FXML
     private JFXButton btn_cerrar;
+
+    @FXML
+    private JFXTextField field_codigo;
 
     @FXML
     private JFXButton menu_consultar;
@@ -44,21 +51,41 @@ public class ModificarMenuController {
     private JFXButton menu_inicio;
 
     @FXML
+    private JFXButton menu_registrar;
+
+    @FXML
+    private Label lbl_error;
+
+    @FXML
+    private Label lbl_exito;
+
+    @FXML
     private JFXTextField field_titulo;
 
     @FXML
-    private JFXButton btn_buscar;
+    private JFXTextField field_editorial;
 
     @FXML
-    void buscar(ActionEvent event) throws IOException {
-    	Parent modificar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
-		
-		Scene scene = new Scene(modificar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
-    }
+    private JFXTextField field_material;
+    
+    @FXML
+    private JFXTextField field_publicacion;
 
+    @FXML
+    private JFXTextField field_caducidad;
+
+    @FXML
+    private JFXTextField field_tomo;
+
+    @FXML
+    private JFXTextField field_paginas;
+
+    @FXML
+    private JFXTextField field_precio;
+
+    @FXML
+    private JFXTextArea field_notas;
+    
     @FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
@@ -149,6 +176,11 @@ public class ModificarMenuController {
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 
 }

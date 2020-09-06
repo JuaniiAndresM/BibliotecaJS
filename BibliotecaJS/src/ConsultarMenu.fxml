@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -10,15 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EliminarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConsultarMenuController">
    <children>
-      <SplitPane prefHeight="483.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+      <SplitPane prefHeight="659.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="183.0" style="-fx-background-color: white;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="753.0" style="-fx-background-color: white;">
                <children>
-                  <Pane layoutX="-8.0" layoutY="-7.0" prefHeight="108.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
+                  <Pane layoutX="-8.0" layoutY="-7.0" prefHeight="109.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
                      <children>
                         <Label layoutX="378.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
                            <font>
@@ -29,16 +29,13 @@
                         <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Label layoutX="405.0" layoutY="201.0" text="Eliminar" textFill="#aeaeae">
+                  <Label layoutX="392.0" layoutY="107.0" text="Consultar" textFill="#aeaeae">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
-                  <JFXButton fx:id="btn_eliminar" layoutX="417.0" layoutY="330.0" onAction="#eliminar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE" />
-                  <Text fx:id="lbl_error" fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
-                  <Text fx:id="lbl_exito" fill="#0077ff" layoutX="371.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El Archivo se elimino correctamente." visible="false" />
-                  <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
+                  <JFXTextField fx:id="field_codigo" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="182.0" prefHeight="42.0" prefWidth="237.0" promptText="Codigo:" unFocusColor="#ababab" />
+                  <Pane layoutY="101.0" prefHeight="564.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
@@ -88,7 +85,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="507.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -100,7 +97,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="331.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="507.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -150,6 +147,17 @@
                         </JFXButton>
                      </children>
                   </Pane>
+                  <Label fx:id="lbl_error" layoutX="387.0" layoutY="165.0" text="El código del archivo ya existe." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_exito" layoutX="374.0" layoutY="165.0" text="El archivo se agrego correctamente." textFill="#0077ff" visible="false" />
+                  <JFXTextField fx:id="field_titulo" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="253.0" prefHeight="42.0" prefWidth="237.0" promptText="Titulo:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_editorial" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Editorial:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_material" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Tipo de Material:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_publicacion" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="488.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de la Publicación:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_caducidad" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="182.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de Caducidad:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_tomo" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="253.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_paginas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Paginas:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio:" unFocusColor="#ababab" />
+                  <JFXTextArea fx:id="field_notas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="210.0" layoutY="563.0" prefHeight="80.0" prefWidth="518.0" promptText="Notas:" unFocusColor="#ababab" />
                </children>
             </AnchorPane>
          </items>

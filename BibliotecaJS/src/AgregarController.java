@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXDatePicker;
@@ -66,61 +67,88 @@ public class AgregarController {
 
 	// Event Listener on Button[#button_agregar].onAction
 	@FXML
-	public void agregar(ActionEvent event) {
-		String algo = this.field_codigo.getText();
-		int codigo = Integer.parseInt(algo);
-		String titulo = this.field_titulo.getText();
-		String autor = this.field_autor.getText();
-		String tipo = this.field_material.getText();
-		String publicacion = this.field_publicacion.getText();
-		String caducidad = this.date_caducidad.getPromptText();
-		String editorial = this.field_editorial.getText();
-		String tomo = this.field_editorial.getText();
-		int paginas = Integer.parseInt(this.field_paginas.getText());
-		int precio = Integer.parseInt(this.field_precio.getText());
-		String notas = this.field_notas.getText();
+	public void agregar(ActionEvent event) throws SQLException {
+		String algo = null;
+		int codigo = 0;
+		String titulo = null;
+		String autor = null;
+		String tipo = null;
+		String publicacion = null;
+		String caducidad = null;
+		String editorial = null;
+		String tomo = null;
+		int paginas = 0;
+		int precio = 0;
+		String notas = null;
 		
-        
-        Conexion con = new Conexion();
+		boolean error = false;
+		try {
+			
+			algo = this.field_codigo.getText();
+			codigo = Integer.parseInt(algo);
+			titulo = this.field_titulo.getText();
+			autor = this.field_autor.getText();
+			tipo = this.field_material.getText();
+			publicacion = this.field_publicacion.getText();
+			caducidad = this.date_caducidad.getPromptText();
+			editorial = this.field_editorial.getText();
+			tomo = this.field_editorial.getText();
+			paginas = Integer.parseInt(this.field_paginas.getText());
+			precio = Integer.parseInt(this.field_precio.getText());
+			notas = this.field_notas.getText();
+			
+		}catch(NumberFormatException e) {
+			error = true;
+			lbl_error.setVisible(true);
+		}
+		
+		
+        do {
+        	Conexion con = new Conexion();
 
-        Connection conexionConnection = con.conectarConBase();
+	        Connection conexionConnection = con.conectarConBase();
+	        
+	        try {
+	        	String buscar = "SELECT * FROM Archivos";
+	        	Statement stmt = conexionConnection.createStatement();
+	            ResultSet cant = stmt.executeQuery(buscar);
+	            boolean encontrado = false;
+	            while(cant.next() && encontrado == false) {
+	            	if(codigo == Integer.parseInt(cant.getString("codigo"))){
+	            		encontrado = true;
+	            		lbl_error.setVisible(true);
+	            		lbl_exito.setVisible(false);
+	            	}
+	            }
+	            if(encontrado == false) {
+	            	lbl_exito.setVisible(true);
+	            	lbl_error.setVisible(false);
+	            	
+	            	String archivoInsert;
+	            	archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas)"
+		            + "values("
+		            + " '"+ codigo + "',"
+		            + " '"+ titulo + "',"
+		            + " '"+ editorial + "',"
+		            + " '"+ tipo + "',"
+		            + " '"+ publicacion + "',"
+		            + " '"+ caducidad + "',"
+		            + " '"+ tomo + "',"
+		            + " '"+ paginas + "',"
+		            + " '"+ precio + "',"
+		            + " '"+ notas + "'"
+		            + ")";
+		            
+			        Statement stmt2 = conexionConnection.createStatement();
+			        int cant2 = stmt2.executeUpdate(archivoInsert);
+	            }
+	        }catch(Exception e) {
+	        	System.out.println("Error");
+	        	
+	        }
+	        conexionConnection.close();
+        }while(error == false);
         
-        try {
-        	String buscar = "SELECT * FROM Archivos";
-        	Statement stmt = conexionConnection.createStatement();
-            ResultSet cant = stmt.executeQuery(buscar);
-            boolean encontrado = false;
-            while(cant.next() && encontrado == false) {
-            	if(codigo == Integer.parseInt(cant.getString("codigo"))){
-            		encontrado = true;
-            		lbl_error.setVisible(true);
-            		lbl_exito.setVisible(false);
-            	}
-            }
-            if(encontrado == false) {
-            	lbl_exito.setVisible(true);
-            	lbl_error.setVisible(false);
-            	
-            	String archivoInsert;
-            	archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas)"
-	            + "values("
-	            + " '"+ codigo + "',"
-	            + " '"+ titulo + "',"
-	            + " '"+ editorial + "',"
-	            + " '"+ tipo + "',"
-	            + " '"+ publicacion + "',"
-	            + " '"+ caducidad + "',"
-	            + " '"+ tomo + "',"
-	            + " '"+ paginas + "',"
-	            + " '"+ precio + "',"
-	            + " '"+ notas + "'"
-	            + ")";
-	            
-		        Statement stmt2 = conexionConnection.createStatement();
-		        int cant2 = stmt2.executeUpdate(archivoInsert);
-            }
-        }catch(Exception e) {
-        }
 	}
 	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
@@ -141,7 +169,13 @@ public class AgregarController {
 	}
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
-	public void menu_consultar(ActionEvent event) {
+	public void menu_consultar(ActionEvent event) throws IOException {
+		Parent menu_consultar = FXMLLoader.load(getClass().getResource("Consultar.fxml"));
+
+        Scene scene = new Scene(menu_consultar);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show(); 
 	}
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML

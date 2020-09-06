@@ -32,10 +32,10 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="lbl_usuario" focusColor="#0077ff" layoutX="471.0" layoutY="161.0" prefHeight="39.0" prefWidth="237.0" promptText="Usuario" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="lbl_usuario" focusColor="#0077ff" labelFloat="true" layoutX="471.0" layoutY="161.0" prefHeight="39.0" prefWidth="237.0" promptText="Usuario" unFocusColor="#ababab" />
                   <JFXButton fx:id="btn_cerrar" layoutX="715.0" layoutY="14.0" onAction="#cerrar" style="-fx-background-color: transparent;" text="X" textFill="#0077ff" />
-                  <JFXPasswordField fx:id="lbl_contraseña" focusColor="#0077ff" layoutX="471.0" layoutY="221.0" prefHeight="39.0" prefWidth="237.0" promptText="Contraseña" unFocusColor="#ababab" />
-                  <Text fx:id="lbl_error" fill="RED" layoutX="504.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario o contraseña incorrecta." visible="false" />
+                  <JFXPasswordField fx:id="lbl_contraseña" focusColor="#0077ff" labelFloat="true" layoutX="471.0" layoutY="235.0" prefHeight="39.0" prefWidth="237.0" promptText="Contraseña" unFocusColor="#ababab" />
+                  <Text fx:id="lbl_error" fill="RED" layoutX="504.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario o contraseña incorrecta." visible="false" />
                   <JFXButton fx:id="btn_login" layoutX="531.0" layoutY="308.0" onAction="#login" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE" />
                </children>
             </AnchorPane>

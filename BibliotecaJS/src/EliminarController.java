@@ -1,4 +1,8 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -44,7 +48,7 @@ public class EliminarController {
     private JFXButton menu_inicio;
 
     @FXML
-    private JFXTextField field_titulo;
+    private JFXTextField field_codigo;
 
     @FXML
     private JFXButton btn_eliminar;
@@ -56,16 +60,44 @@ public class EliminarController {
     private Text lbl_exito;
 
     @FXML
-    public void eliminar(ActionEvent event) {
-    	boolean encontrado = false;
-    	if(encontrado == true) {
-    		lbl_exito.setVisible(true);
-    		lbl_error.setVisible(false);
-    	}
-    	else {
-    		lbl_exito.setVisible(false);
-    		lbl_error.setVisible(true);
-    	}
+    public void eliminar(ActionEvent event) throws SQLException {
+    	
+    	int codigo = Integer.parseInt(this.field_codigo.getText());
+    	
+    	Conexion con = new Conexion();
+
+        Connection conexionConnection = con.conectarConBase();
+        
+    	try {
+        	String buscar = "SELECT * FROM Archivos";
+        	Statement stmt = conexionConnection.createStatement();
+            ResultSet cant = stmt.executeQuery(buscar);
+            
+            boolean encontrado = false;
+            
+            while(cant.next() && encontrado == false) {
+            	if(codigo == (Integer.parseInt(cant.getString("codigo")))){
+            		encontrado = true;
+            		
+            		String deleteArchivo;
+            		deleteArchivo = "DELETE FROM Archivos WHERE codigo ='" + codigo + "'";
+    	            
+    		        Statement stmt2 = conexionConnection.createStatement();
+    		        int cant2 = stmt2.executeUpdate(deleteArchivo);
+            		
+            		
+            		lbl_exito.setVisible(true);
+            		lbl_error.setVisible(false);
+            	}
+            }
+        	if(encontrado == false){
+        		lbl_error.setVisible(true);
+        		lbl_exito.setVisible(false);
+        	}
+        } catch(Exception e){
+        	System.out.println("Error al Conectar.");
+        }
+    	conexionConnection.close();
     }
 
     @FXML
@@ -87,7 +119,13 @@ public class EliminarController {
 	}
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
-	public void menu_consultar(ActionEvent event) {
+	public void menu_consultar(ActionEvent event) throws IOException {
+		Parent menu_consultar = FXMLLoader.load(getClass().getResource("Consultar.fxml"));
+
+        Scene scene = new Scene(menu_consultar);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show(); 
 	}
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML
