@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,11 +10,16 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
-public class MainController {
+public class MainController implements Initializable{
 	LoginController logincontroller = new LoginController();
 	
 	@FXML
@@ -108,19 +114,18 @@ public class MainController {
 	@FXML
 	public void login(ActionEvent event) throws IOException {
 		if(logincontroller.VerificarSesion() == true){
-			System.out.println("Ya se inicio sesión.");
-		}
-		else if(logincontroller.VerificarSesion() == false) {
-			System.out.println("No se inicio sesión.");
-		}
-		
-		Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        	System.out.println("Ya se inicio sesión.");
+        }
+        else if(logincontroller.VerificarSesion() == false) {
+        	System.out.println("No se inicio sesión.");
+        }
+        		
+        Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
         Scene scene = new Scene(login);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
-        window.show();   
-
+        window.show();
 	}
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
@@ -128,5 +133,25 @@ public class MainController {
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		if(logincontroller.VerificarSesion() == true) {
+			if(logincontroller.VerificarAdmin() == true) {
+				//Botones admin setVisible(true);
+			}
+			else {
+				//Botones admin setVisible(false);
+				//Botones bibliotecario setVisible(true);
+				
+				menu_login.setVisible(false);
+				menu_cerrarsesion.setVisible(true);
+			}
+		}
+		else {
+			menu_login.setVisible(true);
+			menu_cerrarsesion.setVisible(false);
+		}
+		
 	}
 }
