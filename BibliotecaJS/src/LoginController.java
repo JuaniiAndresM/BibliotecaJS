@@ -98,15 +98,12 @@ public class LoginController {
             	lbl_error.setVisible(true);
             }
         }catch(Exception e) {
-        	System.out.println("No se encontro el usuario.");
         }
     }
     public void setSesion(boolean estado) {
     	this.sesion = estado;
-    	System.out.println(sesion);
     }
     public boolean VerificarSesion(){
-    	System.out.println(sesion);
     	return this.sesion;
     }
 

@@ -160,6 +160,8 @@
                         </JFXButton>
                      </children>
                   </Pane>
+                  <Label fx:id="lbl_error" layoutX="387.0" layoutY="165.0" text="El código del archivo ya existe." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_exito" layoutX="374.0" layoutY="165.0" text="El archivo se agrego correctamente." textFill="#0077ff" visible="false" />
                </children>
             </AnchorPane>
          </items>

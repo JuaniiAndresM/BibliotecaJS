@@ -96,7 +96,6 @@ public class RegisterController {
 	            
 		        Statement stmt2 = conexionConnection.createStatement();
 		        int cant2 = stmt2.executeUpdate(usuarioInsert);
-		        System.out.println(cant2);
         	}
             
 
