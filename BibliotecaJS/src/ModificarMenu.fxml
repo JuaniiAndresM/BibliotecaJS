@@ -34,6 +34,9 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
+                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
+                  <JFXButton fx:id="btn_buscar" layoutX="417.0" layoutY="330.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
+                  <Text fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
                   <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
@@ -43,7 +46,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Consultar.png" />
+                                    <Image url="@icons/Consultar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -55,7 +58,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Agregar.png" />
+                                    <Image url="@icons/Agregar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -67,7 +70,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Modificar.png" />
+                                    <Image url="@icons/Modificar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -79,7 +82,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Eliminar.png" />
+                                    <Image url="@icons/Eliminar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -91,19 +94,19 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Login.png" />
+                                    <Image url="@icons/Login.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="288.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="331.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Login.png" />
+                                    <Image url="@icons/Login.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -115,7 +118,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Buscar.PNG" />
+                                    <Image url="@icons/Buscar.PNG" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -127,16 +130,25 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Inicio.png" />
+                                    <Image url="@icons/Inicio.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_registrar" layoutX="4.0" layoutY="272.0" onAction="#registrar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Registrar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Registrar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
                      </children>
                   </Pane>
-                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
-                  <JFXButton fx:id="btn_buscar" layoutX="417.0" layoutY="330.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
-                  <Text fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
                </children>
             </AnchorPane>
          </items>

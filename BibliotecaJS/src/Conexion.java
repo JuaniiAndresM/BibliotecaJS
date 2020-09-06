@@ -14,18 +14,15 @@ public Connection conectarConBase() {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		nombreBaseString = "jdbc:mysql://localhost:3306/"+nombreBaseString+"?useTimezone=true&serverTimezone=UTC";
 		conector = DriverManager.getConnection(nombreBaseString,usuarioString,passwordString);
-		if (conector != null)
-		JOptionPane.showMessageDialog(null, "Conexión Exitosa");
-	} catch (ClassNotFoundException e) {
+	}catch (ClassNotFoundException e) {
 		e.printStackTrace();
 		JOptionPane.showMessageDialog(null, "Error en la conexion con el Driver");
 	} catch (SQLException e) {
 		e.printStackTrace();
 		JOptionPane.showMessageDialog(null, "Error en la conexion con el Base");
 	}
-		return conector;
-	}
-
+	return conector;
+}
 	public void desconectar() throws SQLException {
 		if (conector != null) {
 			conector.close();

@@ -44,6 +44,10 @@
                   <JFXTextField fx:id="field_paginas" focusColor="#0077ff" layoutX="478.0" layoutY="282.0" prefHeight="42.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="223.0" layoutY="173.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
                   <JFXTextArea fx:id="field_notas" focusColor="#0077ff" layoutX="478.0" layoutY="390.0" prefHeight="100.0" prefWidth="237.0" promptText="Notas" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" layoutX="488.0" layoutY="337.0" prefHeight="42.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
+                  <Label layoutX="477.0" layoutY="350.0" text="\$" />
+                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" layoutX="223.0" layoutY="455.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
+                  <JFXButton fx:id="button_agregar" layoutX="405.0" layoutY="522.0" onAction="#agregar" prefHeight="43.0" prefWidth="126.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE" />
                   <Pane layoutY="101.0" prefHeight="496.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
@@ -53,7 +57,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Consultar.png" />
+                                    <Image url="@icons/Consultar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -65,7 +69,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Agregar.png" />
+                                    <Image url="@icons/Agregar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -77,7 +81,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Modificar.png" />
+                                    <Image url="@icons/Modificar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -89,7 +93,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Eliminar.png" />
+                                    <Image url="@icons/Eliminar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -101,19 +105,19 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Login.png" />
+                                    <Image url="@icons/Login.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="396.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="439.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Login.png" />
+                                    <Image url="@icons/Login.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -125,7 +129,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Buscar.PNG" />
+                                    <Image url="@icons/Buscar.PNG" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -137,17 +141,25 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@../../../../Desktop/Programacion/Inicio.png" />
+                                    <Image url="@icons/Inicio.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_registrar" layoutX="4.0" layoutY="272.0" onAction="#registrar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Registrar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Registrar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
                      </children>
                   </Pane>
-                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" layoutX="488.0" layoutY="337.0" prefHeight="42.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
-                  <Label layoutX="477.0" layoutY="350.0" text="\$" />
-                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" layoutX="223.0" layoutY="455.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
-                  <JFXButton fx:id="button_agregar" layoutX="405.0" layoutY="522.0" onAction="#agregar" prefHeight="43.0" prefWidth="126.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE" />
                </children>
             </AnchorPane>
          </items>

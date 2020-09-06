@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -49,48 +51,63 @@ public class LoginController {
 		 Platform.exit();
 	}
     
-    boolean sesion = false;
     
     
     @FXML
+    public boolean sesion = false;
+    public boolean admin = false;
+    
     public void login(ActionEvent event) throws IOException {
     	String usuario = this.lbl_usuario.getText();
         String contraseña = this.lbl_contraseña.getText();
-
-        if(usuario.equalsIgnoreCase("admin") && contraseña.equalsIgnoreCase("admin")) {
-                sesion = true;
-                System.out.println(sesion);
-                System.out.println("Iniciado Correctamente.");
-                Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
-
-                Scene scene = new Scene(main);
-                Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                window.setScene(scene);
-                window.show();
-        }
-        else {
-            lbl_error.setVisible(true);
-        }
-        System.out.println("Conectando con la Base de Datos...");
+        
         Conexion con = new Conexion();
 
         Connection conexionConnection = con.conectarConBase();
-
+        
         try {
-        String nombre_usuario;
-        String user_contraseña;
+        	String buscar = "SELECT * FROM Usuarios";
+        	Statement stmt = conexionConnection.createStatement();
+            ResultSet cant = stmt.executeQuery(buscar);
+            boolean encontrado = false;
+            while(cant.next() && encontrado == false) {
+            	if(usuario.equals(cant.getString("nombre"))) {
+            		if(contraseña.equals(cant.getString("contraseña"))) {
+            			if(cant.getString("nombre").equals("admin") && cant.getString("contraseña").equals("admin")) {
+            				Parent main = FXMLLoader.load(getClass().getResource("LoginCambiar.fxml"));
 
-        nombre_usuario = "SELECT * FROM Usuarios";
+                	        Scene scene = new Scene(main);
+                	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                	        window.setScene(scene);
+                	        window.show();
+                    	}
+            			encontrado = true;
+            			setSesion(true);
+            			VerificarSesion();
+            			Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-        System.out.println(nombre_usuario);
-
-        } catch(Exception e){
-            System.out.println("Error al Conectar.");
+            	        Scene scene = new Scene(main);
+            	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            	        window.setScene(scene);
+            	        window.show();        			
+            		}
+            	}
+            }
+            if(encontrado == false) {
+            	setSesion(false);
+            	lbl_error.setVisible(true);
+            }
+        }catch(Exception e) {
+        	System.out.println("No se encontro el usuario.");
         }
-
+    }
+    public void setSesion(boolean estado) {
+    	this.sesion = estado;
+    	System.out.println(sesion);
     }
     public boolean VerificarSesion(){
-        return sesion;
+    	System.out.println(sesion);
+    	return this.sesion;
     }
 
 }

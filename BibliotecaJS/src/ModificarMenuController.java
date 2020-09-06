@@ -59,7 +59,8 @@ public class ModificarMenuController {
 		window.show();
     }
 
-    public void menu_inicio(ActionEvent event) throws IOException {
+    @FXML
+	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		
 		Scene scene = new Scene(menu);
@@ -109,24 +110,32 @@ public class ModificarMenuController {
 		window.setScene(scene);
 		window.show();
 	}
+	@FXML
+	public void registrar(ActionEvent event) throws IOException{
+		Parent registrar = FXMLLoader.load(getClass().getResource("Registrar.fxml"));
+		
+		Scene scene = new Scene(registrar);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
 	public void login(ActionEvent event) throws IOException {
-		boolean sesion = logincontroller.VerificarSesion();
+		if(logincontroller.VerificarSesion() == true){
+			System.out.println("Ya se inicio sesión.");
+		}
+		else if(logincontroller.VerificarSesion() == false) {
+			System.out.println("No se inicio sesión.");
+		}
 		
-		if(sesion == true) {
-			System.out.println(sesion);
-			System.out.println("Ya ha iniciado sesión.");
-		}
-		else if(sesion == false) {
-			System.out.println(sesion);
-			Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
-			
-			Scene scene = new Scene(login);
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			window.setScene(scene);
-			window.show();
-		}
+		Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();   
+
 	}
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
