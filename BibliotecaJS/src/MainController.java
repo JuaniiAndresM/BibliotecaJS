@@ -136,6 +136,7 @@ public class MainController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		logincontroller.TestMethod();
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
 				//Botones admin setVisible(true);

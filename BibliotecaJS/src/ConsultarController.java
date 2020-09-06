@@ -75,19 +75,20 @@ public class ConsultarController {
              while(cant.next() && encontrado == false) {
              	if(codigo == (Integer.parseInt(cant.getString("codigo")))) {
              		encontrado = true;
+             		Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
+            		
+            		Scene scene = new Scene(consultar);
+            		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            		window.setScene(scene);
+            		window.show();
              	}
              }
              if(encontrado == false) {
              	lbl_error.setVisible(true);
              }
          }catch(Exception e) {
+        	 System.out.println("");
          }
-    	Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
-		
-		Scene scene = new Scene(consultar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
 
     }
 

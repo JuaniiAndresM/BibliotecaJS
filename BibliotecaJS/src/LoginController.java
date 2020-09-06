@@ -19,6 +19,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController{
+	public boolean sesion = false;
+    public boolean admin = false;
 
     @FXML
     private JFXButton btn_atras;
@@ -53,10 +55,7 @@ public class LoginController{
     
     
     
-    @FXML
-    public boolean sesion = false;
-    public boolean admin = false;
-    
+    @FXML    
     public void login(ActionEvent event) throws IOException {
     	String usuario = this.lbl_usuario.getText();
         String contraseña = this.lbl_contraseña.getText();
@@ -100,18 +99,28 @@ public class LoginController{
             	lbl_error.setVisible(true);
             }
         }catch(Exception e) {
+        	System.out.println("Error");
         }
     }
     public void setAdmin(boolean adm) {
     	this.admin = adm;
+    	System.out.println(admin);
     }
     public void setSesion(boolean estado) {
     	this.sesion = estado;
+    	System.out.println(sesion);
     }
     public boolean VerificarAdmin() {
+    	System.out.println(admin);
     	return this.admin;
     }
     public boolean VerificarSesion(){
+    	System.out.println(sesion);
     	return this.sesion;
+    }
+    public void TestMethod() {
+    	System.out.println("Iniciado Sesion: " + sesion);
+    	System.out.println("Admin: " + admin);
+    	
     }
 }

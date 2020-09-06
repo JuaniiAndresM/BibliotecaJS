@@ -1,28 +1,32 @@
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class BuscarController {
+public class BuscarListaController implements Initializable {
 	LoginController logincontroller = new LoginController();
 
     @FXML
-    private JFXButton btn_cerrar;
+    private JFXButton btn_buscar;
 
     @FXML
     private JFXButton menu_consultar;
-    
-    @FXML
-    private JFXButton menu_inicio;
 
     @FXML
     private JFXButton menu_agregar;
@@ -43,43 +47,32 @@ public class BuscarController {
     private JFXButton menu_buscar;
 
     @FXML
-    private JFXTextField field_titulo;
+    private JFXButton menu_inicio;
 
     @FXML
-    private JFXTextField field_autor;
+    private JFXButton menu_registrar;
 
     @FXML
-    private JFXTextField field_material;
+    private JFXButton btn_cerrar;
 
     @FXML
-    private JFXTextField field_publicacion;
+    private TableView<String> table_buscar;
 
     @FXML
-    private JFXTextField field_caducidad;
+    private TableColumn<String, ?> col_codigo;
 
     @FXML
-    private JFXTextField field_editorial;
+    private TableColumn<?, ?> col_titulo;
 
     @FXML
-    private JFXTextField field_tomo;
+    private TableColumn<?, ?> col_editorial;
 
     @FXML
-    private JFXTextField field_paginas;
+    private TableColumn<?, ?> col_tipo;
 
     @FXML
-    private JFXTextField field_precio;
+    void buscar(ActionEvent event) {
 
-    @FXML
-    private JFXButton btn_buscar;
-
-    @FXML
-    public void buscar(ActionEvent event) throws IOException {
-    	Parent login = FXMLLoader.load(getClass().getResource("BuscarLista.fxml"));
-
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
     }
 
     @FXML
@@ -172,6 +165,14 @@ public class BuscarController {
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
+	}
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		col_codigo.setCellValueFactory(new PropertyValueFactory("asd"));
+		col_titulo.setCellValueFactory(new PropertyValueFactory("asd"));
+		col_editorial.setCellValueFactory(new PropertyValueFactory("asd"));
+		col_tipo.setCellValueFactory(new PropertyValueFactory("asd"));
+		
 	}
 
 }

@@ -31,7 +31,7 @@
                   <JFXTextField fx:id="field_paginas" focusColor="#0077ff" layoutX="478.0" layoutY="274.0" prefHeight="42.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_precio" focusColor="#0077ff" layoutX="486.0" layoutY="323.0" prefHeight="42.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
                   <JFXButton fx:id="btn_buscar" layoutX="409.0" layoutY="398.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
-                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" layoutX="224.0" layoutY="330.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
+                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" editable="false" layoutX="224.0" layoutY="330.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
                   <Label layoutX="475.0" layoutY="336.0" text="\$" />
                   <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
