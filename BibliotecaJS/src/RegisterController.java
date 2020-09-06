@@ -68,7 +68,7 @@ public class RegisterController {
             boolean encontrado = false;
             while(cant.next() && encontrado == false) {
             	try{
-            		if(usuario.equals(cant.getString("nombre"))) {
+            		if(usuario.equalsIgnoreCase(cant.getString("nombre"))) {
 	            		encontrado = true;
 	            		lbl_exito.setVisible(false);
 	            		lbl_error.setVisible(true);
