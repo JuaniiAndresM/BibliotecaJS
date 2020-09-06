@@ -23,9 +23,9 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
                   <JFXButton fx:id="btn_buscar" layoutX="417.0" layoutY="330.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
-                  <Text fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
+                  <Text fx:id="lbl_error" fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
                   <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">

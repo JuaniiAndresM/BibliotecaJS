@@ -1,4 +1,8 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -10,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ModificarMenuController {
@@ -44,19 +49,46 @@ public class ModificarMenuController {
     private JFXButton menu_inicio;
 
     @FXML
-    private JFXTextField field_titulo;
+    private JFXTextField field_codigo;
 
     @FXML
     private JFXButton btn_buscar;
+    @FXML
+    private Text lbl_error;
 
     @FXML
-    void buscar(ActionEvent event) throws IOException {
-    	Parent modificar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
-		
-		Scene scene = new Scene(modificar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+    void buscar(ActionEvent event) throws IOException, SQLException {
+    	
+    	int codigo = Integer.parseInt(this.field_codigo.getText());
+    	
+    	Conexion con = new Conexion();
+
+        Connection conexionConnection = con.conectarConBase();
+        
+    	try {
+        	String buscar = "SELECT * FROM Archivos";
+        	Statement stmt = conexionConnection.createStatement();
+            ResultSet cant = stmt.executeQuery(buscar);
+            
+            boolean encontrado = false;
+            
+            while(cant.next() && encontrado == false) {
+            	if(codigo == (Integer.parseInt(cant.getString("codigo")))){
+            		Parent modificar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
+            		
+            		Scene scene = new Scene(modificar);
+            		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            		window.setScene(scene);
+            		window.show();
+            	}
+            }
+        	if(encontrado == false){
+        		lbl_error.setVisible(true);
+        	}
+        } catch(Exception e){
+        	System.out.println("Error al Conectar.");
+        }
+    	conexionConnection.close();
     }
 
     @FXML

@@ -67,11 +67,15 @@ public class RegisterController {
             
             boolean encontrado = false;
             while(cant.next() && encontrado == false) {
-            	if(usuario.equals(cant.getString("admin"))){
-            		encontrado = true;
-            		lbl_exito.setVisible(false);
-            		lbl_error.setVisible(true);
+            	try{
+            		if(usuario.equals(cant.getString("nombre"))) {
+	            		encontrado = true;
+	            		lbl_exito.setVisible(false);
+	            		lbl_error.setVisible(true);
+            		}
+            	}catch(Exception e){
             	}
+            		
             }
         	if(encontrado == false){
         		lbl_error.setVisible(false);
