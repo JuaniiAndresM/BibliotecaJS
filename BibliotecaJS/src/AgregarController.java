@@ -151,7 +151,7 @@ public class AgregarController implements Initializable {
 	            if(encontrado == false) {
 	            	
 	            	String archivoInsert;
-	            	archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas)"
+	            	archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas, autor)"
 		            + "values("
 		            + " '"+ codigo + "',"
 		            + " '"+ titulo + "',"
@@ -162,7 +162,8 @@ public class AgregarController implements Initializable {
 		            + " '"+ tomo + "',"
 		            + " '"+ paginas + "',"
 		            + " '"+ precio + "',"
-		            + " '"+ notas + "'"
+		            + " '"+ notas + "',"
+		            + " '"+ autor + "'"
 		            + ")";
 	            	
 			        Statement stmt2 = conexionConnection.createStatement();

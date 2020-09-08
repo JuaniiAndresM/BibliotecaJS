@@ -31,7 +31,7 @@
                   <JFXTextField fx:id="field_editorial" focusColor="#0077ff" labelFloat="true" layoutX="477.0" layoutY="224.0" prefHeight="35.0" prefWidth="237.0" promptText="Editorial" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_tomo" focusColor="#0077ff" labelFloat="true" layoutX="475.0" layoutY="295.0" prefHeight="35.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_paginas" focusColor="#0077ff" labelFloat="true" layoutX="474.0" layoutY="366.0" prefHeight="35.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_codigo" disable="true" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="222.0" layoutY="224.0" prefHeight="35.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" labelFloat="true" layoutX="222.0" layoutY="224.0" prefHeight="35.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
                   <JFXTextArea fx:id="field_notas" focusColor="#0077ff" labelFloat="true" layoutX="476.0" layoutY="522.0" prefHeight="100.0" prefWidth="237.0" promptText="Notas" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_precio" focusColor="#0077ff" labelFloat="true" layoutX="478.0" layoutY="441.0" prefHeight="35.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
                   <Label layoutX="471.0" layoutY="450.0" text="\$" />

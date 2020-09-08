@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
@@ -60,7 +61,7 @@ public class BuscarController implements Initializable {
     private JFXTextField field_publicacion;
 
     @FXML
-    private JFXTextField field_caducidad;
+    private JFXDatePicker field_caducidad;
 
     @FXML
     private JFXTextField field_editorial;

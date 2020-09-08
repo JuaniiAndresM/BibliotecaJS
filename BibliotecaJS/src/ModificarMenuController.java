@@ -91,6 +91,7 @@ public class ModificarMenuController implements Initializable {
             		mc.setPaginas(cant.getString("paginas"));
             		mc.setPrecio(cant.getString("precio"));
             		mc.setNotas(cant.getString("notas"));
+            		mc.setAutor(cant.getString("autor"));
             		
             		encontrado = true;
             		System.out.println("2");

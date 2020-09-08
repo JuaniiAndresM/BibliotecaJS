@@ -29,6 +29,7 @@ public class ConsultarMenuController implements Initializable{
 	static String paginas;
 	static String precio;
 	static String notas;
+	static String autor;
 	
     @FXML
     private JFXButton btn_cerrar;
@@ -74,6 +75,9 @@ public class ConsultarMenuController implements Initializable{
 
     @FXML
     private JFXTextField field_editorial;
+    
+    @FXML
+    private JFXTextField field_autor;
 
     @FXML
     private JFXTextField field_material;
@@ -201,6 +205,7 @@ public class ConsultarMenuController implements Initializable{
 		field_editorial.setText(getEditorial());
 		field_material.setText(getMaterial());
 		field_publicacion.setText(getPublicacion());
+		field_autor.setText(getAutor());
 		if(getCaducidad().toString().equals("null")) {
 			field_caducidad.setText("No disponible");
 		}
@@ -309,6 +314,12 @@ public class ConsultarMenuController implements Initializable{
 	}
 	public String getNotas() {
 		return notas;
+	}
+	public void setAutor(String autorSQL) {
+		this.autor = autorSQL;
+	}
+	public String getAutor() {
+		return autor;
 	}
 	
 

@@ -38,6 +38,8 @@ public class ModificarController implements Initializable {
 	static String paginas;
 	static String precio;
 	static String notas;
+	static String autor;
+	static int codigoLibro;
 	
 	@FXML
 	private JFXButton button_modificar;
@@ -94,7 +96,7 @@ public class ModificarController implements Initializable {
 
 	// Event Listener on Button[#button_modificar].onAction
 	@FXML
-	public void modificar(ActionEvent event) throws SQLException {
+	public void modificar(ActionEvent event) throws SQLException, IOException {
 		int codigo = 0;
 		String titulo = null;
 		String autor = null;
@@ -112,6 +114,30 @@ public class ModificarController implements Initializable {
 			error = false;
 			try {
 				codigo = Integer.parseInt(this.field_codigo.getText());
+				if(codigo != codigoLibro) {
+					Conexion con = new Conexion();
+			        Connection conexionConnection = con.conectarConBase();
+				        
+			        try {
+			        	String buscar = "SELECT * FROM Archivos";
+			        	Statement stmt = conexionConnection.createStatement();
+			            ResultSet cant = stmt.executeQuery(buscar);
+			            while(cant.next()) {
+			            	if(codigo == Integer.parseInt(cant.getString("codigo"))){
+			            		error = true;
+			            		lbl_error.setVisible(true);
+			            		lbl_exito.setVisible(false);
+			            	}
+			            	else {
+			            		lbl_error.setVisible(false);
+			            		error = false;
+			            	}
+			            }
+			        }catch(Exception e) {
+			        	System.out.println("Error");
+			        }	
+				}
+				
 				try {
 					paginas = Integer.parseInt(this.field_paginas.getText());
 					try {
@@ -142,47 +168,27 @@ public class ModificarController implements Initializable {
 			editorial = this.field_editorial.getText();
 			tomo = this.field_tomo.getText();			
 			notas = this.field_notas.getText();
-			
-		if(error == false) {
-			Conexion con = new Conexion();
-	        Connection conexionConnection = con.conectarConBase();
-		        
-	        try {
-	        	String buscar = "SELECT * FROM Archivos";
-	        	Statement stmt = conexionConnection.createStatement();
-	            ResultSet cant = stmt.executeQuery(buscar);
-	            boolean encontrado = false;
-	            while(cant.next() && encontrado == false) {
-	            	if(codigo == Integer.parseInt(cant.getString("codigo"))){
-	            		encontrado = true;
-	            		String archivoInsert;
-		            	archivoInsert = "UPDATE Archivos SET titulo = '"+titulo+"', editorial = '"+editorial+"',"
-		            			+ " tipo_material = '"+tipo+"', fecha_publicacion = '"+publicacion+"', fecha_caducidad = '"+caducidad+"',"
-		            					+ " tomo = '"+tomo+"', paginas = '"+paginas+"', precio = '"+precio+"', notas = '"+notas+"' WHERE codigo ='"+codigo+"'";
-		            	
-				        Statement stmt2 = conexionConnection.createStatement();
-				        int cant2 = stmt2.executeUpdate(archivoInsert);
-				        
-				        lbl_exito.setVisible(true);
-		            	lbl_error.setVisible(false);
-		            	lbl_errorprecio.setVisible(false);
-						lbl_errorcodigo.setVisible(false);
-						lbl_errorpaginas.setVisible(false);
-	            	}
-	            }
-	            if(encontrado == false) {
-	            	lbl_exito.setVisible(false);
-	            	lbl_error.setVisible(true);
-	            	lbl_errorprecio.setVisible(false);
-					lbl_errorcodigo.setVisible(false);
-					lbl_errorpaginas.setVisible(false);
-	            }
-	        }catch(Exception e) {
-	        	System.out.println("Error");
-	        	
-	        }
-	        conexionConnection.close();
-		}
+			if(error == false) {
+				Conexion con = new Conexion();
+		        Connection conexionConnection = con.conectarConBase();
+			        
+		        String archivoInsert;
+			    archivoInsert = "UPDATE Archivos SET codigo = '"+codigo+"', titulo = '"+titulo+"', editorial = '"+editorial+"',"
+			    + " tipo_material = '"+tipo+"', fecha_publicacion = '"+publicacion+"', fecha_caducidad = '"+caducidad+"',"
+			    + " tomo = '"+tomo+"', paginas = '"+paginas+"', precio = '"+precio+"', notas = '"+notas+"', autor = '"+autor+"'WHERE codigo ='"+codigoLibro+"'";
+			            	
+			    Statement stmt2 = conexionConnection.createStatement();
+				int cant2 = stmt2.executeUpdate(archivoInsert);
+				
+				lbl_exito.setVisible(true);
+				lbl_error.setVisible(false);        						
+				lbl_errorprecio.setVisible(false);
+				lbl_errorcodigo.setVisible(false);
+				lbl_errorpaginas.setVisible(false);
+				
+				codigoLibro = codigo;
+				conexionConnection.close();
+			}
 	}
 	// Event Listener on Button[#menu_buscar].onAction
 	@FXML
@@ -284,6 +290,7 @@ public class ModificarController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		codigoLibro = Integer.parseInt(getCodigo());
 		field_codigo.setText(getCodigo());
 		field_titulo.setText(getTitulo());
 		field_editorial.setText(getEditorial());
@@ -294,6 +301,7 @@ public class ModificarController implements Initializable {
 		field_paginas.setText(getPaginas());
 		field_precio.setText(getPrecio());
 		field_notas.setText(getNotas());
+		field_autor.setText(getAutor());
 		
 		boolean sesion = logincontroller.VerificarSesion();
 		
@@ -391,5 +399,11 @@ public class ModificarController implements Initializable {
 	}
 	public String getNotas() {
 		return notas;
+	}
+	public void setAutor(String autorSQL) {
+		this.autor = autorSQL;
+	}
+	public String getAutor() {
+		return autor;
 	}
 }

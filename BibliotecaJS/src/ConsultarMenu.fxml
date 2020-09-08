@@ -142,10 +142,10 @@
                   <JFXTextField fx:id="field_editorial" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Editorial:" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_material" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Tipo de Material:" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_publicacion" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="209.0" layoutY="488.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de la Publicación:" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_caducidad" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="182.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de Caducidad:" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_tomo" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="253.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo:" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_paginas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Paginas:" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_precio" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="490.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_caducidad" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="491.0" layoutY="253.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de Caducidad:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_tomo" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="491.0" layoutY="328.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_paginas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="491.0" layoutY="407.0" prefHeight="42.0" prefWidth="237.0" promptText="Paginas:" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="491.0" layoutY="488.0" prefHeight="42.0" prefWidth="237.0" promptText="Precio:" unFocusColor="#ababab" />
                   <JFXTextArea fx:id="field_notas" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="210.0" layoutY="563.0" prefHeight="80.0" prefWidth="518.0" promptText="Notas:" unFocusColor="#ababab" />
                   <Pane layoutX="-4.0" prefHeight="108.0" prefWidth="761.0" style="-fx-background-color: #0077ff;">
                      <children>
@@ -163,6 +163,7 @@
                         </ImageView>
                      </children>
                   </Pane>
+                  <JFXTextField fx:id="field_autor" editable="false" focusColor="#0077ff" labelFloat="true" layoutX="491.0" layoutY="182.0" prefHeight="42.0" prefWidth="237.0" promptText="Autor:" unFocusColor="#ababab" />
                </children>
             </AnchorPane>
          </items>

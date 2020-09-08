@@ -89,6 +89,7 @@ public class ConsultarController implements Initializable{
              		cmc.setPaginas(cant.getString("paginas"));
              		cmc.setPrecio(cant.getString("precio"));
              		cmc.setNotas(cant.getString("notas"));
+             		cmc.setAutor(cant.getString("autor"));
              		
              		encontrado = true;
              		Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
