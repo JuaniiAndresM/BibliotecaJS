@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AgregarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AgregarController">
    <children>
-      <SplitPane prefHeight="591.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+      <SplitPane prefHeight="713.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="753.0" style="-fx-background-color: white;">
                <children>
@@ -24,20 +24,19 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" layoutX="223.0" layoutY="228.0" prefHeight="42.0" prefWidth="237.0" promptText="Titulo" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_autor" focusColor="#0077ff" layoutX="223.0" layoutY="282.0" prefHeight="42.0" prefWidth="237.0" promptText="Autor" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_material" focusColor="#0077ff" layoutX="223.0" layoutY="337.0" prefHeight="42.0" prefWidth="237.0" promptText="Tipo de Material" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_publicacion" focusColor="#0077ff" layoutX="223.0" layoutY="391.0" prefHeight="42.0" prefWidth="237.0" promptText="Fecha de la Publicación" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_editorial" focusColor="#0077ff" layoutX="478.0" layoutY="173.0" prefHeight="42.0" prefWidth="237.0" promptText="Editorial" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_tomo" focusColor="#0077ff" layoutX="478.0" layoutY="227.0" prefHeight="42.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_paginas" focusColor="#0077ff" layoutX="478.0" layoutY="282.0" prefHeight="42.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="223.0" layoutY="173.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
-                  <JFXTextArea fx:id="field_notas" focusColor="#0077ff" layoutX="478.0" layoutY="390.0" prefHeight="100.0" prefWidth="237.0" promptText="Notas" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" layoutX="488.0" layoutY="337.0" prefHeight="42.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
-                  <Label layoutX="477.0" layoutY="350.0" text="\$" />
-                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" editable="false" layoutX="223.0" layoutY="455.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
-                  <JFXButton fx:id="button_agregar" layoutX="405.0" layoutY="522.0" onAction="#agregar" prefHeight="43.0" prefWidth="126.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE" />
-                  <Pane layoutY="101.0" prefHeight="496.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
+                  <JFXTextField fx:id="field_titulo" focusColor="#0077ff" labelFloat="true" layoutX="220.0" layoutY="296.0" prefHeight="35.0" prefWidth="237.0" promptText="Titulo" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_autor" focusColor="#0077ff" labelFloat="true" layoutX="219.0" layoutY="366.0" prefHeight="35.0" prefWidth="237.0" promptText="Autor" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_material" focusColor="#0077ff" labelFloat="true" layoutX="219.0" layoutY="441.0" prefHeight="35.0" prefWidth="237.0" promptText="Tipo de Material" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_publicacion" focusColor="#0077ff" labelFloat="true" layoutX="219.0" layoutY="514.0" prefHeight="35.0" prefWidth="237.0" promptText="Fecha de la Publicación" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_editorial" focusColor="#0077ff" labelFloat="true" layoutX="477.0" layoutY="224.0" prefHeight="35.0" prefWidth="237.0" promptText="Editorial" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_tomo" focusColor="#0077ff" labelFloat="true" layoutX="475.0" layoutY="295.0" prefHeight="35.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_paginas" focusColor="#0077ff" labelFloat="true" layoutX="474.0" layoutY="366.0" prefHeight="35.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" labelFloat="true" layoutX="222.0" layoutY="224.0" prefHeight="35.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
+                  <JFXTextArea fx:id="field_notas" focusColor="#0077ff" labelFloat="true" layoutX="476.0" layoutY="522.0" prefHeight="100.0" prefWidth="237.0" promptText="Notas" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" labelFloat="true" layoutX="478.0" layoutY="441.0" prefHeight="35.0" prefWidth="229.0" promptText="Precio" unFocusColor="#ababab" />
+                  <Label layoutX="471.0" layoutY="450.0" text="\$" />
+                  <JFXButton fx:id="button_agregar" layoutX="403.0" layoutY="654.0" onAction="#agregar" prefHeight="43.0" prefWidth="126.0" style="-fx-background-color: #0077ff;" text="Agregar" textFill="WHITE" />
+                  <Pane layoutY="101.0" prefHeight="617.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
@@ -87,7 +86,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="439.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="560.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -99,7 +98,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="439.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="560.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -167,6 +166,10 @@
                         </ImageView>
                      </children>
                   </Pane>
+                  <Label fx:id="lbl_errorcodigo" layoutX="387.0" layoutY="165.0" text="El código debe ser numerico." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_errorpaginas" layoutX="358.0" layoutY="165.0" text="El numero de paginas debe ser numerico." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_errorprecio" layoutX="389.0" layoutY="165.0" text="El precio debe ser numerico." textFill="RED" visible="false" />
+                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" editable="false" layoutX="214.0" layoutY="590.0" prefHeight="28.0" prefWidth="248.0" promptText="Fecha de Caducidad" />
                </children>
             </AnchorPane>
          </items>

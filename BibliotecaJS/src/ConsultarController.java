@@ -66,8 +66,9 @@ public class ConsultarController implements Initializable{
     public void consultar(ActionEvent event) throws IOException {
     	int codigo = Integer.parseInt(field_codigo.getText());
     	
+    	 ConsultarMenuController cmc = new ConsultarMenuController();
+    	 
     	 Conexion con = new Conexion();
-
          Connection conexionConnection = con.conectarConBase();
          
          try {
@@ -77,6 +78,18 @@ public class ConsultarController implements Initializable{
              boolean encontrado = false;
              while(cant.next() && encontrado == false) {
              	if(codigo == (Integer.parseInt(cant.getString("codigo")))) {
+             		
+             		cmc.setCodigo(cant.getString("codigo"));
+             		cmc.setTitulo(cant.getString("titulo"));
+             		cmc.setEditorial(cant.getString("editorial"));
+             		cmc.setMaterial(cant.getString("tipo_material"));
+             		cmc.setPublicacion(cant.getString("fecha_publicacion"));
+             		cmc.setCaducidad(cant.getString("fecha_caducidad"));
+             		cmc.setTomo(cant.getString("tomo"));
+             		cmc.setPaginas(cant.getString("paginas"));
+             		cmc.setPrecio(cant.getString("precio"));
+             		cmc.setNotas(cant.getString("notas"));
+             		
              		encontrado = true;
              		Parent consultar = FXMLLoader.load(getClass().getResource("ConsultarMenu.fxml"));
             		

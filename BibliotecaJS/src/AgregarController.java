@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -49,6 +51,12 @@ public class AgregarController implements Initializable {
 	@FXML
 	private Label lbl_exito;
 	@FXML
+	private Label lbl_errorcodigo;
+	@FXML
+	private Label lbl_errorpaginas;
+	@FXML
+	private Label lbl_errorprecio;
+	@FXML
 	private JFXButton menu_buscar;
 	@FXML
 	private JFXButton menu_consultar;
@@ -76,13 +84,12 @@ public class AgregarController implements Initializable {
 	// Event Listener on Button[#button_agregar].onAction
 	@FXML
 	public void agregar(ActionEvent event) throws SQLException {
-		String algo = null;
 		int codigo = 0;
 		String titulo = null;
 		String autor = null;
 		String tipo = null;
 		String publicacion = null;
-		String caducidad = null;
+		LocalDate caducidad = null;
 		String editorial = null;
 		String tomo = null;
 		int paginas = 0;
@@ -90,32 +97,45 @@ public class AgregarController implements Initializable {
 		String notas = null;
 		
 		boolean error = false;
-		try {
-			
-			algo = this.field_codigo.getText();
-			codigo = Integer.parseInt(algo);
+		
+			error = false;
+			try {
+				codigo = Integer.parseInt(this.field_codigo.getText());
+				try {
+					paginas = Integer.parseInt(this.field_paginas.getText());
+					try {
+						precio = Integer.parseInt(this.field_precio.getText());
+					}catch(NumberFormatException e) {
+						error = true;
+						lbl_errorprecio.setVisible(true);
+						lbl_errorcodigo.setVisible(false);
+						lbl_errorpaginas.setVisible(false);
+					}
+				}catch(NumberFormatException e) {
+					error = true;
+					lbl_errorprecio.setVisible(false);
+					lbl_errorcodigo.setVisible(false);
+					lbl_errorpaginas.setVisible(true);
+				}
+			}catch(NumberFormatException e){
+				error = true;
+				lbl_errorprecio.setVisible(false);
+				lbl_errorcodigo.setVisible(true);
+				lbl_errorpaginas.setVisible(false);
+			}				
 			titulo = this.field_titulo.getText();
 			autor = this.field_autor.getText();
 			tipo = this.field_material.getText();
 			publicacion = this.field_publicacion.getText();
-			caducidad = this.date_caducidad.getPromptText();
+			caducidad = this.date_caducidad.getValue();
 			editorial = this.field_editorial.getText();
-			tomo = this.field_editorial.getText();
-			paginas = Integer.parseInt(this.field_paginas.getText());
-			precio = Integer.parseInt(this.field_precio.getText());
+			tomo = this.field_tomo.getText();			
 			notas = this.field_notas.getText();
 			
-		}catch(NumberFormatException e) {
-			error = true;
-			lbl_error.setVisible(true);
-		}
-		
-		
-        do {
-        	Conexion con = new Conexion();
-
+		if(error == false) {
+			Conexion con = new Conexion();
 	        Connection conexionConnection = con.conectarConBase();
-	        
+		        
 	        try {
 	        	String buscar = "SELECT * FROM Archivos";
 	        	Statement stmt = conexionConnection.createStatement();
@@ -129,8 +149,6 @@ public class AgregarController implements Initializable {
 	            	}
 	            }
 	            if(encontrado == false) {
-	            	lbl_exito.setVisible(true);
-	            	lbl_error.setVisible(false);
 	            	
 	            	String archivoInsert;
 	            	archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas)"
@@ -146,18 +164,25 @@ public class AgregarController implements Initializable {
 		            + " '"+ precio + "',"
 		            + " '"+ notas + "'"
 		            + ")";
-		            
+	            	
 			        Statement stmt2 = conexionConnection.createStatement();
 			        int cant2 = stmt2.executeUpdate(archivoInsert);
+			        
+			        lbl_exito.setVisible(true);
+	            	lbl_error.setVisible(false);
+	            	lbl_errorprecio.setVisible(false);
+					lbl_errorcodigo.setVisible(false);
+					lbl_errorpaginas.setVisible(false);
 	            }
 	        }catch(Exception e) {
 	        	System.out.println("Error");
 	        	
 	        }
 	        conexionConnection.close();
-        }while(error == false);
+		}
         
-	}
+    }
+
 	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));

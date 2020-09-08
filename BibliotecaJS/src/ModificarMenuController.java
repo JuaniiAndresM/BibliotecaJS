@@ -65,36 +65,51 @@ public class ModificarMenuController implements Initializable {
     @FXML
     void buscar(ActionEvent event) throws IOException, SQLException {
     	
-    	int codigo = Integer.parseInt(this.field_codigo.getText());
+    	int codigo = Integer.parseInt(field_codigo.getText());
     	
-    	Conexion con = new Conexion();
-
+   	 ModificarController mc = new ModificarController();
+   	 
+   	 Conexion con = new Conexion();
         Connection conexionConnection = con.conectarConBase();
         
-    	try {
+        try {
         	String buscar = "SELECT * FROM Archivos";
         	Statement stmt = conexionConnection.createStatement();
             ResultSet cant = stmt.executeQuery(buscar);
-            
             boolean encontrado = false;
-            
             while(cant.next() && encontrado == false) {
-            	if(codigo == (Integer.parseInt(cant.getString("codigo")))){
-            		Parent modificar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
+            	System.out.println("1");
+            	if(codigo == (Integer.parseInt(cant.getString("codigo")))) {
             		
-            		Scene scene = new Scene(modificar);
-            		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            		window.setScene(scene);
-            		window.show();
+            		mc.setCodigo(cant.getString("codigo"));
+            		mc.setTitulo(cant.getString("titulo"));
+            		mc.setEditorial(cant.getString("editorial"));
+            		mc.setMaterial(cant.getString("tipo_material"));
+            		mc.setPublicacion(cant.getString("fecha_publicacion"));
+            		mc.setCaducidad(cant.getString("fecha_caducidad"));
+            		mc.setTomo(cant.getString("tomo"));
+            		mc.setPaginas(cant.getString("paginas"));
+            		mc.setPrecio(cant.getString("precio"));
+            		mc.setNotas(cant.getString("notas"));
+            		
+            		encontrado = true;
+            		System.out.println("2");
+            		
+            	Parent consultar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
+           		
+           		Scene scene = new Scene(consultar);
+           		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+           		window.setScene(scene);
+           		window.show();
+           		System.out.println("3");
             	}
+            	System.out.println("4");
             }
-        	if(encontrado == false){
-        		lbl_error.setVisible(true);
-        	}
-        } catch(Exception e){
-        	System.out.println("Error al Conectar.");
+            if(encontrado == false) {
+            	lbl_error.setVisible(true);
+            }
+        }catch(Exception e) {
         }
-    	conexionConnection.close();
     }
 
     @FXML
