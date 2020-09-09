@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
@@ -8,190 +11,376 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class BuscarController implements Initializable {
 	LoginController logincontroller = new LoginController();
+	BuscarListaController blc = new BuscarListaController();
+	
+	@FXML
+	private Label lbl_error;
+	
+	@FXML
+	private JFXButton btn_cerrar;
+	
+	@FXML
+	private JFXButton menu_registrar;
 
-    @FXML
-    private JFXButton btn_cerrar;
-    @FXML
-    private JFXButton menu_registrar;
+	@FXML
+	private JFXButton menu_consultar;
 
-    @FXML
-    private JFXButton menu_consultar;
-    
-    @FXML
-    private JFXButton menu_inicio;
+	@FXML
+	private JFXButton menu_inicio;
 
-    @FXML
-    private JFXButton menu_agregar;
+	@FXML
+	private JFXButton menu_agregar;
 
-    @FXML
-    private JFXButton menu_modificar;
+	@FXML
+	private JFXButton menu_modificar;
 
-    @FXML
-    private JFXButton menu_eliminar;
+	@FXML
+	private JFXButton menu_eliminar;
 
-    @FXML
-    private JFXButton menu_login;
+	@FXML
+	private JFXButton menu_login;
 
-    @FXML
-    private JFXButton menu_cerrarsesion;
+	@FXML
+	private JFXButton menu_cerrarsesion;
 
-    @FXML
-    private JFXButton menu_buscar;
+	@FXML
+	private JFXButton menu_buscar;
 
-    @FXML
-    private JFXTextField field_titulo;
+	@FXML
+	private JFXTextField field_titulo;
 
-    @FXML
-    private JFXTextField field_autor;
+	@FXML
+	private JFXTextField field_autor;
 
-    @FXML
-    private JFXTextField field_material;
+	@FXML
+	private JFXTextField field_material;
 
-    @FXML
-    private JFXTextField field_publicacion;
+	@FXML
+	private JFXTextField field_publicacion;
 
-    @FXML
-    private JFXDatePicker field_caducidad;
+	@FXML
+	private JFXDatePicker field_caducidad;
 
-    @FXML
-    private JFXTextField field_editorial;
+	@FXML
+	private JFXTextField field_editorial;
 
-    @FXML
-    private JFXTextField field_tomo;
+	@FXML
+	private JFXTextField field_tomo;
 
-    @FXML
-    private JFXTextField field_paginas;
+	@FXML
+	private JFXTextField field_paginas;
 
-    @FXML
-    private JFXTextField field_precio;
+	@FXML
+	private JFXTextField field_precio;
 
-    @FXML
-    private JFXButton btn_buscar;
+	@FXML
+	private JFXButton btn_buscar;
 
-    @FXML
-    public void buscar(ActionEvent event) throws IOException {
-    	Parent login = FXMLLoader.load(getClass().getResource("BuscarLista.fxml"));
+	@FXML
+	public void buscar(ActionEvent event) throws IOException {
+		boolean ingresoTitulo, ingresoAutor, ingresoFecha, ingresoEditorial, ingresoTomo, ingresoPaginas, ingresoPrecio;
+		ingresoTitulo = ingresoAutor = ingresoFecha = ingresoEditorial = ingresoTomo = ingresoPaginas = ingresoPrecio = false;
 
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    }
+		String titulo = field_titulo.getText();
+		if (!titulo.equals("")) {
+			ingresoTitulo = true;
+		}
+		String autor = field_autor.getText();
+		if (!autor.equals("")) {
+			ingresoAutor = true;
+		}
+		String publicacion = field_publicacion.getText();
+		if (!publicacion.equals("")) {
+			ingresoFecha = true;
+		}
+		String editorial = field_editorial.getText();
+		if (!editorial.equals("")) {
+			ingresoEditorial = true;
+		}
+		String tomo = field_tomo.getText();
+		if (!tomo.equals("")) {
+			ingresoTomo = true;
+		}
+		String paginas = field_paginas.getText();
+		if (!paginas.equals("")) {
+			ingresoPaginas = true;
+		}
+		String precio = field_precio.getText();
+		if (!precio.equals("")) {
+			ingresoPrecio = true;
+		}
 
-    @FXML
+		Conexion con = new Conexion();
+		Connection conexionConnection = con.conectarConBase();
+
+		try {
+			String buscar = "SELECT * FROM Archivos";
+			Statement stmt = conexionConnection.createStatement();
+			ResultSet cant = stmt.executeQuery(buscar);
+			
+			boolean continuar = false;
+			while (cant.next()) {
+				boolean encontrado = false;
+				boolean parametrosEncontrados = true;
+				int parametros = 0;
+				String resultado = "SELECT * FROM Archivos WHERE";
+				if (ingresoTitulo == true) {
+					if (cant.getString("titulo").toLowerCase().contains(titulo.toLowerCase())) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String tituloEncontrado = cant.getString("titulo");
+						resultado += " titulo ='" + tituloEncontrado + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoAutor == true) {
+					if (cant.getString("autor").toLowerCase().contains(autor.toLowerCase())) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String autorEncontrado = cant.getString("autor");
+						resultado += " autor ='" + autorEncontrado + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoFecha == true) {
+					if (Integer.parseInt(publicacion) == Integer.parseInt(cant.getString("fecha_publicacion"))) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String fechaEncontrada = cant.getString("fecha_publicacion");
+						resultado += " fecha_publicacion ='" + fechaEncontrada + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoEditorial == true) {
+					if (cant.getString("editorial").toLowerCase().contains(editorial.toLowerCase())) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String editorialEncontrada = cant.getString("editorial");
+						resultado += " editorial ='" + editorialEncontrada + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoTomo == true) {
+					if (Integer.parseInt(tomo) == Integer.parseInt(cant.getString("tomo"))) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String tomoEncontrado = cant.getString("tomo");
+						resultado += " tomo ='" + tomoEncontrado + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoPaginas == true) {
+					if (Integer.parseInt(cant.getString("paginas")) <= Integer.parseInt(paginas)) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						resultado += " paginas <= " + paginas + "";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoPrecio == true) {
+					if (Integer.parseInt(cant.getString("precio")) <= Integer.parseInt(precio)) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						resultado += " precio <= " + precio + "";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (encontrado == true && parametrosEncontrados == true) {					
+					Statement stmt2 = conexionConnection.createStatement();
+					ResultSet cant2 = stmt2.executeQuery(buscar);					
+					cant2 = stmt2.executeQuery(resultado);
+					continuar = true;
+					blc.clearLista();
+					
+					while(cant2.next()) {
+						blc.agregarLista(cant2.getString("codigo"));
+					}
+					
+					lbl_error.setVisible(false);
+				}
+
+			}
+			if(continuar == true) {
+				Parent BuscarLista = FXMLLoader.load(getClass().getResource("BuscarLista.fxml"));
+
+				Scene scene = new Scene(BuscarLista);
+				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				window.setScene(scene);
+				window.show();
+			}
+		} catch (Exception e) {
+			System.out.println("Error");
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
-		
+
 		Scene scene = new Scene(menu);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	public void menu_buscar(ActionEvent event) throws IOException {
 		Parent buscar = FXMLLoader.load(getClass().getResource("Buscar.fxml"));
-		
+
 		Scene scene = new Scene(buscar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
 	public void menu_consultar(ActionEvent event) throws IOException {
 		Parent menu_consultar = FXMLLoader.load(getClass().getResource("Consultar.fxml"));
 
-        Scene scene = new Scene(menu_consultar);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show(); 
+		Scene scene = new Scene(menu_consultar);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
+
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML
 	public void menu_agregar(ActionEvent event) throws IOException {
 		Parent agregar = FXMLLoader.load(getClass().getResource("Agregar.fxml"));
-		
+
 		Scene scene = new Scene(agregar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_modificar].onAction
 	@FXML
 	public void menu_modificar(ActionEvent event) throws IOException {
 		Parent modificar = FXMLLoader.load(getClass().getResource("ModificarMenu.fxml"));
-		
+
 		Scene scene = new Scene(modificar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_eliminar].onAction
 	@FXML
 	public void menu_eliminar(ActionEvent event) throws IOException {
 		Parent menu_eliminar = FXMLLoader.load(getClass().getResource("Eliminar.fxml"));
-		
+
 		Scene scene = new Scene(menu_eliminar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	@FXML
-	public void registrar(ActionEvent event) throws IOException{
+	public void registrar(ActionEvent event) throws IOException {
 		Parent registrar = FXMLLoader.load(getClass().getResource("Registrar.fxml"));
-		
+
 		Scene scene = new Scene(registrar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
 	public void login(ActionEvent event) throws IOException {
-		if(logincontroller.VerificarSesion() == true){
+		if (logincontroller.VerificarSesion() == true) {
 			System.out.println("Ya se inicio sesión.");
-		}
-		else if(logincontroller.VerificarSesion() == false) {
+		} else if (logincontroller.VerificarSesion() == false) {
 			System.out.println("No se inicio sesión.");
 		}
-		
+
 		Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();   
+		Scene scene = new Scene(login);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 
 	}
+
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
 	public void menu_cerrarsesion(ActionEvent event) throws IOException {
 		logincontroller.setSesion(false);
-		
+
 		Parent login = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-		
+		Scene scene = new Scene(login);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		boolean sesion = logincontroller.VerificarSesion();
-		
-		if(logincontroller.VerificarSesion() == true) {
-			if(logincontroller.VerificarAdmin() == true){
+
+		if (logincontroller.VerificarSesion() == true) {
+			if (logincontroller.VerificarAdmin() == true) {
 				menu_login.setVisible(false);
 				menu_cerrarsesion.setVisible(true);
 				menu_registrar.setVisible(true);
@@ -199,7 +388,7 @@ public class BuscarController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
-			}else{
+			} else {
 				menu_login.setVisible(false);
 				menu_cerrarsesion.setVisible(true);
 				menu_registrar.setVisible(false);
@@ -208,7 +397,7 @@ public class BuscarController implements Initializable {
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
 			}
-		}else {
+		} else {
 			menu_login.setVisible(true);
 			menu_cerrarsesion.setVisible(false);
 			menu_registrar.setVisible(false);
@@ -217,10 +406,11 @@ public class BuscarController implements Initializable {
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
 		}
-		
+
 	}
+
 	public void cerrar(ActionEvent event) {
-		 Platform.exit();
+		Platform.exit();
 	}
 
 }

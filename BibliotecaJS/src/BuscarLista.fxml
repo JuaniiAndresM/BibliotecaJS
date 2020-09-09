@@ -156,7 +156,7 @@
                     <columns>
                       <TableColumn fx:id="col_codigo" prefWidth="100.0" text="Código" />
                       <TableColumn fx:id="col_titulo" prefWidth="163.0" text="Titulo" />
-                        <TableColumn fx:id="col_editorial" prefWidth="138.0" text="Editorial" />
+                        <TableColumn fx:id="col_autor" prefWidth="138.0" text="Autor" />
                         <TableColumn fx:id="col_tipo" prefWidth="143.0" text="Tipo" />
                     </columns>
                   </TableView>

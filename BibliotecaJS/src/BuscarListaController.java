@@ -1,5 +1,9 @@
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -21,6 +25,9 @@ import javafx.stage.Stage;
 
 public class BuscarListaController implements Initializable {
 	LoginController logincontroller = new LoginController();
+	static ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+	
+	static String codigo, autor, publicacion, caducidad, editorial, tomo, paginas, precio; 
 
     @FXML
     private JFXButton btn_buscar;
@@ -56,19 +63,19 @@ public class BuscarListaController implements Initializable {
     private JFXButton btn_cerrar;
 
     @FXML
-    private TableView<String> table_buscar;
+    private static TableView<ModelTable> table_buscar;
 
     @FXML
-    private TableColumn<String, ?> col_codigo;
+    private TableColumn<ModelTable, String> col_codigo;
 
     @FXML
-    private TableColumn<?, ?> col_titulo;
+    private TableColumn<ModelTable, String> col_titulo;
 
     @FXML
-    private TableColumn<?, ?> col_editorial;
+    private TableColumn<ModelTable, String> col_autor;
 
     @FXML
-    private TableColumn<?, ?> col_tipo;
+    private TableColumn<ModelTable, String> col_tipo;
 
     @FXML
     void buscar(ActionEvent event) {
@@ -174,6 +181,7 @@ public class BuscarListaController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		table_buscar = new TableView<ModelTable>();
 		
 		boolean sesion = logincontroller.VerificarSesion();
 		
@@ -213,5 +221,67 @@ public class BuscarListaController implements Initializable {
 	}
 	public void cerrar(ActionEvent event) {
 		 Platform.exit();
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+	public void setPublicacion(String publicacion) {
+		this.publicacion = publicacion;
+	}
+	public void setCaducidad(String caducidad) {
+		this.caducidad = caducidad;
+	}
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
+	}
+	public void setTomo(String tomo) {
+		this.tomo = tomo;
+	}
+	public void setPaginas(String paginas) {
+		this.paginas = paginas;
+	}
+	public void setPrecio(String precio) {
+		this.precio = precio;
+	}
+	public static void clearLista() {
+		System.out.println("clearList method");
+	}
+	public void agregarLista(String codigo) {
+		try {		
+	    	Conexion con = new Conexion();
+	        Connection conexionConnection = con.conectarConBase();
+	        
+	        String buscar = "SELECT * FROM Archivos";
+	    	
+	    	Statement stmt = conexionConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	        ResultSet cant = stmt.executeQuery(buscar);
+	        
+	        while(cant.next()) {
+	        	if(codigo.equals(cant.getString("codigo"))){
+	        		System.out.println("Codigo: " + codigo);
+	        		System.out.println("Codig Encontrado: " + codigo);
+	        		oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
+	        		
+	        		System.out.println(cant.getString("titulo"));
+	        		
+	        		col_codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+		        	col_titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+		        	col_autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+		        	col_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+	        		
+	        		
+	        		table_buscar.setItems(oblist);
+	        	}
+	        }
+	            
+	            
+	            
+	        }catch(SQLException e) {
+	        	e.printStackTrace();
+	        }
+		
 	}
 }
