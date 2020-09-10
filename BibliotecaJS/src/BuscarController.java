@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -90,7 +91,7 @@ public class BuscarController implements Initializable {
 	private JFXButton btn_buscar;
 
 	@FXML
-	public void buscar(ActionEvent event) throws IOException {
+	public void buscar(ActionEvent event) throws IOException, SQLException {
 		boolean ingresoTitulo, ingresoAutor, ingresoFecha, ingresoEditorial, ingresoTomo, ingresoPaginas, ingresoPrecio;
 		ingresoTitulo = ingresoAutor = ingresoFecha = ingresoEditorial = ingresoTomo = ingresoPaginas = ingresoPrecio = false;
 
@@ -125,26 +126,31 @@ public class BuscarController implements Initializable {
 
 		Conexion con = new Conexion();
 		Connection conexionConnection = con.conectarConBase();
+		
+		String eliminarTabla = "DELETE FROM Encontrados";
+		
+		Statement stmt = conexionConnection.createStatement();
+        int cant = stmt.executeUpdate(eliminarTabla);
 
 		try {
 			String buscar = "SELECT * FROM Archivos";
-			Statement stmt = conexionConnection.createStatement();
-			ResultSet cant = stmt.executeQuery(buscar);
+			Statement stmt2 = conexionConnection.createStatement();
+			ResultSet cant2 = stmt.executeQuery(buscar);
 			
 			boolean continuar = false;
-			while (cant.next()) {
+			while (cant2.next()) {
 				boolean encontrado = false;
 				boolean parametrosEncontrados = true;
 				int parametros = 0;
 				String resultado = "SELECT * FROM Archivos WHERE";
 				if (ingresoTitulo == true) {
-					if (cant.getString("titulo").toLowerCase().contains(titulo.toLowerCase())) {
+					if (cant2.getString("titulo").toLowerCase().contains(titulo.toLowerCase())) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String tituloEncontrado = cant.getString("titulo");
+						String tituloEncontrado = cant2.getString("titulo");
 						resultado += " titulo ='" + tituloEncontrado + "'";
 					}
 					else {
@@ -153,13 +159,13 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoAutor == true) {
-					if (cant.getString("autor").toLowerCase().contains(autor.toLowerCase())) {
+					if (cant2.getString("autor").toLowerCase().contains(autor.toLowerCase())) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String autorEncontrado = cant.getString("autor");
+						String autorEncontrado = cant2.getString("autor");
 						resultado += " autor ='" + autorEncontrado + "'";
 					}
 					else {
@@ -168,13 +174,13 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoFecha == true) {
-					if (Integer.parseInt(publicacion) == Integer.parseInt(cant.getString("fecha_publicacion"))) {
+					if (Integer.parseInt(publicacion) == Integer.parseInt(cant2.getString("fecha_publicacion"))) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String fechaEncontrada = cant.getString("fecha_publicacion");
+						String fechaEncontrada = cant2.getString("fecha_publicacion");
 						resultado += " fecha_publicacion ='" + fechaEncontrada + "'";
 					}
 					else {
@@ -183,13 +189,13 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoEditorial == true) {
-					if (cant.getString("editorial").toLowerCase().contains(editorial.toLowerCase())) {
+					if (cant2.getString("editorial").toLowerCase().contains(editorial.toLowerCase())) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String editorialEncontrada = cant.getString("editorial");
+						String editorialEncontrada = cant2.getString("editorial");
 						resultado += " editorial ='" + editorialEncontrada + "'";
 					}
 					else {
@@ -198,13 +204,13 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoTomo == true) {
-					if (Integer.parseInt(tomo) == Integer.parseInt(cant.getString("tomo"))) {
+					if (Integer.parseInt(tomo) == Integer.parseInt(cant2.getString("tomo"))) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String tomoEncontrado = cant.getString("tomo");
+						String tomoEncontrado = cant2.getString("tomo");
 						resultado += " tomo ='" + tomoEncontrado + "'";
 					}
 					else {
@@ -213,7 +219,7 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoPaginas == true) {
-					if (Integer.parseInt(cant.getString("paginas")) <= Integer.parseInt(paginas)) {
+					if (Integer.parseInt(cant2.getString("paginas")) <= Integer.parseInt(paginas)) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
@@ -227,7 +233,7 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (ingresoPrecio == true) {
-					if (Integer.parseInt(cant.getString("precio")) <= Integer.parseInt(precio)) {
+					if (Integer.parseInt(cant2.getString("precio")) <= Integer.parseInt(precio)) {
 						parametros++;
 						if(parametros > 1) {
 							resultado += " AND";
@@ -241,14 +247,32 @@ public class BuscarController implements Initializable {
 					}
 				}
 				if (encontrado == true && parametrosEncontrados == true) {					
-					Statement stmt2 = conexionConnection.createStatement();
-					ResultSet cant2 = stmt2.executeQuery(buscar);					
-					cant2 = stmt2.executeQuery(resultado);
+					Statement stmt3 = conexionConnection.createStatement();
+					ResultSet cant3 = stmt2.executeQuery(buscar);					
+					cant3 = stmt3.executeQuery(resultado);
 					continuar = true;
-					blc.clearLista();
+					System.out.println(resultado);
 					
-					while(cant2.next()) {
-						blc.agregarLista(cant2.getString("codigo"));
+					while(cant3.next()) {
+						
+						String ingresar = "INSERT INTO Encontrados (codigo, titulo, editorial, tipo_material, fecha_publicacion,"
+								+ " fecha_caducidad, tomo, paginas, precio, notas, autor) "
+								+ "values("
+								+ "'"+ cant3.getString("codigo") + "',"+
+								"'"+ cant3.getString("titulo") + "',"+
+								"'"+ cant3.getString("editorial") + "',"+
+								"'"+ cant3.getString("tipo_material") + "',"+
+								"'"+ cant3.getString("fecha_publicacion") + "',"+
+								"'"+ cant3.getString("fecha_caducidad") + "',"+
+								"'"+ cant3.getString("tomo") + "',"+
+								"'"+ cant3.getString("paginas") + "',"+
+								"'"+ cant3.getString("precio") + "',"+
+								"'"+ cant3.getString("notas") + "',"+
+								"'"+ cant3.getString("autor") + "'"+
+								")";
+						
+						Statement stmt4 = conexionConnection.createStatement();
+						int cant4 = stmt4.executeUpdate(ingresar);
 					}
 					
 					lbl_error.setVisible(false);

@@ -25,163 +25,195 @@ import javafx.stage.Stage;
 
 public class BuscarListaController implements Initializable {
 	LoginController logincontroller = new LoginController();
-	static ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
-	
-	static String codigo, autor, publicacion, caducidad, editorial, tomo, paginas, precio; 
 
-    @FXML
-    private JFXButton btn_buscar;
+	static String codigo;
 
-    @FXML
-    private JFXButton menu_consultar;
+	@FXML
+	private JFXButton btn_buscar;
 
-    @FXML
-    private JFXButton menu_agregar;
+	@FXML
+	private JFXButton menu_consultar;
 
-    @FXML
-    private JFXButton menu_modificar;
+	@FXML
+	private JFXButton menu_agregar;
 
-    @FXML
-    private JFXButton menu_eliminar;
+	@FXML
+	private JFXButton menu_modificar;
 
-    @FXML
-    private JFXButton menu_login;
+	@FXML
+	private JFXButton menu_eliminar;
 
-    @FXML
-    private JFXButton menu_cerrarsesion;
+	@FXML
+	private JFXButton menu_login;
 
-    @FXML
-    private JFXButton menu_buscar;
+	@FXML
+	private JFXButton menu_cerrarsesion;
 
-    @FXML
-    private JFXButton menu_inicio;
+	@FXML
+	private JFXButton menu_buscar;
 
-    @FXML
-    private JFXButton menu_registrar;
+	@FXML
+	private JFXButton menu_inicio;
 
-    @FXML
-    private JFXButton btn_cerrar;
+	@FXML
+	private JFXButton menu_registrar;
 
-    @FXML
-    private static TableView<ModelTable> table_buscar;
+	@FXML
+	private JFXButton btn_cerrar;
 
-    @FXML
-    private TableColumn<ModelTable, String> col_codigo;
+	@FXML
+	private TableView<ModelTable> table_buscar;
 
-    @FXML
-    private TableColumn<ModelTable, String> col_titulo;
+	@FXML
+	private TableColumn<ModelTable, String> col_codigo;
 
-    @FXML
-    private TableColumn<ModelTable, String> col_autor;
+	@FXML
+	private TableColumn<ModelTable, String> col_titulo;
 
-    @FXML
-    private TableColumn<ModelTable, String> col_tipo;
+	@FXML
+	private TableColumn<ModelTable, String> col_autor;
 
-    @FXML
-    void buscar(ActionEvent event) {
+	@FXML
+	private TableColumn<ModelTable, String> col_tipo;
 
-    }
+	@FXML
+	void buscar(ActionEvent event) {
 
-    @FXML
+	}
+
+	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
-		
+
 		Scene scene = new Scene(menu);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	public void menu_buscar(ActionEvent event) throws IOException {
 		Parent buscar = FXMLLoader.load(getClass().getResource("Buscar.fxml"));
-		
+
 		Scene scene = new Scene(buscar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_consultar].onAction
 	@FXML
 	public void menu_consultar(ActionEvent event) throws IOException {
 		Parent menu_consultar = FXMLLoader.load(getClass().getResource("Consultar.fxml"));
 
-        Scene scene = new Scene(menu_consultar);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show(); 
+		Scene scene = new Scene(menu_consultar);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
+
 	// Event Listener on Button[#btn_agregar].onAction
 	@FXML
 	public void menu_agregar(ActionEvent event) throws IOException {
 		Parent agregar = FXMLLoader.load(getClass().getResource("Agregar.fxml"));
-		
+
 		Scene scene = new Scene(agregar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_modificar].onAction
 	@FXML
 	public void menu_modificar(ActionEvent event) throws IOException {
 		Parent modificar = FXMLLoader.load(getClass().getResource("ModificarMenu.fxml"));
-		
+
 		Scene scene = new Scene(modificar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_eliminar].onAction
 	@FXML
 	public void menu_eliminar(ActionEvent event) throws IOException {
 		Parent menu_eliminar = FXMLLoader.load(getClass().getResource("Eliminar.fxml"));
-		
+
 		Scene scene = new Scene(menu_eliminar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	@FXML
-	public void registrar(ActionEvent event) throws IOException{
+	public void registrar(ActionEvent event) throws IOException {
 		Parent registrar = FXMLLoader.load(getClass().getResource("Registrar.fxml"));
-		
+
 		Scene scene = new Scene(registrar);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
 	}
+
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
 	public void login(ActionEvent event) throws IOException {
-		if(logincontroller.VerificarSesion() == true){
+		if (logincontroller.VerificarSesion() == true) {
 			System.out.println("Ya se inicio sesión.");
-		}
-		else if(logincontroller.VerificarSesion() == false) {
+		} else if (logincontroller.VerificarSesion() == false) {
 			System.out.println("No se inicio sesión.");
 		}
-		
+
 		Parent login = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();   
+		Scene scene = new Scene(login);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 
 	}
+
 	// Event Listener on Button[#btn_cerrarsesion].onAction
 	@FXML
 	public void menu_cerrarsesion(ActionEvent event) throws IOException {
 		logincontroller.setSesion(false);
-		
+
 		Parent login = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-        Scene scene = new Scene(login);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-		
+		Scene scene = new Scene(login);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+
 	}
+	static ObservableList<ModelTable> oblist;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		table_buscar = new TableView<ModelTable>();
+		
+		try {
+			String buscar = "SELECT * FROM Encontrados";
+			oblist = FXCollections.observableArrayList();
+			
+			Conexion con = new Conexion();
+			Connection conexionConnection = con.conectarConBase();
+			
+			ResultSet cant = conexionConnection.createStatement().executeQuery(buscar);
+			
+			while(cant.next()) {
+				System.out.println(cant.getString("codigo"));
+				oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
+			}
+			
+			col_codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+	    	col_titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+	    	col_autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+	    	col_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+	    	
+	    	table_buscar.setItems(oblist);
+	    	
+	    	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		boolean sesion = logincontroller.VerificarSesion();
 		
@@ -217,71 +249,9 @@ public class BuscarListaController implements Initializable {
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
 		}
-		
 	}
+
 	public void cerrar(ActionEvent event) {
-		 Platform.exit();
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public void setPublicacion(String publicacion) {
-		this.publicacion = publicacion;
-	}
-	public void setCaducidad(String caducidad) {
-		this.caducidad = caducidad;
-	}
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
-	public void setTomo(String tomo) {
-		this.tomo = tomo;
-	}
-	public void setPaginas(String paginas) {
-		this.paginas = paginas;
-	}
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
-	public static void clearLista() {
-		System.out.println("clearList method");
-	}
-	public void agregarLista(String codigo) {
-		try {		
-	    	Conexion con = new Conexion();
-	        Connection conexionConnection = con.conectarConBase();
-	        
-	        String buscar = "SELECT * FROM Archivos";
-	    	
-	    	Statement stmt = conexionConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	        ResultSet cant = stmt.executeQuery(buscar);
-	        
-	        while(cant.next()) {
-	        	if(codigo.equals(cant.getString("codigo"))){
-	        		System.out.println("Codigo: " + codigo);
-	        		System.out.println("Codig Encontrado: " + codigo);
-	        		oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
-	        		
-	        		System.out.println(cant.getString("titulo"));
-	        		
-	        		col_codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-		        	col_titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-		        	col_autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
-		        	col_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-	        		
-	        		
-	        		table_buscar.setItems(oblist);
-	        	}
-	        }
-	            
-	            
-	            
-	        }catch(SQLException e) {
-	        	e.printStackTrace();
-	        }
-		
+		Platform.exit();
 	}
 }
