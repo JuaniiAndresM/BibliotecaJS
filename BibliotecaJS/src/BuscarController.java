@@ -12,8 +12,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,19 +128,23 @@ public class BuscarController implements Initializable {
 		String eliminarTabla = "DELETE FROM Encontrados";
 		
 		Statement stmt = conexionConnection.createStatement();
-        int cant = stmt.executeUpdate(eliminarTabla);
+        stmt.executeUpdate(eliminarTabla);
 
 		try {
 			String buscar = "SELECT * FROM Archivos";
 			Statement stmt2 = conexionConnection.createStatement();
-			ResultSet cant2 = stmt.executeQuery(buscar);
+			ResultSet cant2 = stmt2.executeQuery(buscar);
 			
 			boolean continuar = false;
 			while (cant2.next()) {
+				
 				boolean encontrado = false;
 				boolean parametrosEncontrados = true;
+				
 				int parametros = 0;
+				
 				String resultado = "SELECT * FROM Archivos WHERE";
+				
 				if (ingresoTitulo == true) {
 					if (cant2.getString("titulo").toLowerCase().contains(titulo.toLowerCase())) {
 						parametros++;
@@ -248,13 +250,11 @@ public class BuscarController implements Initializable {
 				}
 				if (encontrado == true && parametrosEncontrados == true) {					
 					Statement stmt3 = conexionConnection.createStatement();
-					ResultSet cant3 = stmt2.executeQuery(buscar);					
-					cant3 = stmt3.executeQuery(resultado);
+					ResultSet cant3 = stmt3.executeQuery(resultado);
 					continuar = true;
 					System.out.println(resultado);
 					
-					while(cant3.next()) {
-						
+					while(cant3.next()) {						
 						String ingresar = "INSERT INTO Encontrados (codigo, titulo, editorial, tipo_material, fecha_publicacion,"
 								+ " fecha_caducidad, tomo, paginas, precio, notas, autor) "
 								+ "values("
@@ -272,7 +272,7 @@ public class BuscarController implements Initializable {
 								")";
 						
 						Statement stmt4 = conexionConnection.createStatement();
-						int cant4 = stmt4.executeUpdate(ingresar);
+						stmt4.executeUpdate(ingresar);
 					}
 					
 					lbl_error.setVisible(false);
@@ -400,8 +400,6 @@ public class BuscarController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-		boolean sesion = logincontroller.VerificarSesion();
 
 		if (logincontroller.VerificarSesion() == true) {
 			if (logincontroller.VerificarAdmin() == true) {

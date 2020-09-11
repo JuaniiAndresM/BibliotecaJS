@@ -4,11 +4,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -135,7 +132,7 @@ public class AgregarController implements Initializable {
 		if(error == false) {
 			Conexion con = new Conexion();
 	        Connection conexionConnection = con.conectarConBase();
-		        
+	        
 	        try {
 	        	String buscar = "SELECT * FROM Archivos";
 	        	Statement stmt = conexionConnection.createStatement();
@@ -167,7 +164,7 @@ public class AgregarController implements Initializable {
 		            + ")";
 	            	
 			        Statement stmt2 = conexionConnection.createStatement();
-			        int cant2 = stmt2.executeUpdate(archivoInsert);
+			        stmt2.executeUpdate(archivoInsert);
 			        
 			        lbl_exito.setVisible(true);
 	            	lbl_error.setVisible(false);
@@ -177,7 +174,6 @@ public class AgregarController implements Initializable {
 	            }
 	        }catch(Exception e) {
 	        	System.out.println("Error");
-	        	
 	        }
 	        conexionConnection.close();
 		}
@@ -283,8 +279,6 @@ public class AgregarController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		boolean sesion = logincontroller.VerificarSesion();
 		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {

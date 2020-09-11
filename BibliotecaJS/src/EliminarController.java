@@ -88,7 +88,7 @@ public class EliminarController implements Initializable{
             		deleteArchivo = "DELETE FROM Archivos WHERE codigo ='" + codigo + "'";
     	            
     		        Statement stmt2 = conexionConnection.createStatement();
-    		        int cant2 = stmt2.executeUpdate(deleteArchivo);
+    		        stmt2.executeUpdate(deleteArchivo);
             		
             		
             		lbl_exito.setVisible(true);
@@ -204,8 +204,6 @@ public class EliminarController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		boolean sesion = logincontroller.VerificarSesion();
 		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {

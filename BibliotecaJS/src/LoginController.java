@@ -106,15 +106,15 @@ public class LoginController{
         }
     }
     public void setAdmin(boolean adm) {
-    	this.admin = adm;
+    	LoginController.admin = adm;
     }
     public void setSesion(boolean estado) {
-    	this.sesion = estado;
+    	LoginController.sesion = estado;
     }
     public boolean VerificarAdmin() {
-    	return this.admin;
+    	return LoginController.admin;
     }
     public boolean VerificarSesion(){
-    	return this.sesion;
+    	return LoginController.sesion;
     }
 }

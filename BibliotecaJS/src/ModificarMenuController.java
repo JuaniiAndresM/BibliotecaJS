@@ -213,8 +213,6 @@ public class ModificarMenuController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		boolean sesion = logincontroller.VerificarSesion();
-		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
 				menu_login.setVisible(false);

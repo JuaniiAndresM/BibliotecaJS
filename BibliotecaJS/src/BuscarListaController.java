@@ -3,7 +3,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -188,35 +187,14 @@ public class BuscarListaController implements Initializable {
 	static ObservableList<ModelTable> oblist;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		try {
-			String buscar = "SELECT * FROM Encontrados";
-			oblist = FXCollections.observableArrayList();
-			
-			Conexion con = new Conexion();
-			Connection conexionConnection = con.conectarConBase();
-			
-			ResultSet cant = conexionConnection.createStatement().executeQuery(buscar);
-			
-			while(cant.next()) {
-				System.out.println(cant.getString("codigo"));
-				oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
-			}
-			
+
 			col_codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
 	    	col_titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
 	    	col_autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
 	    	col_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 	    	
-	    	table_buscar.setItems(oblist);
-	    	
-	    	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		boolean sesion = logincontroller.VerificarSesion();
-		
+	    	table_buscar.setItems(oblist());
+
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
 				menu_login.setVisible(false);
@@ -253,5 +231,33 @@ public class BuscarListaController implements Initializable {
 
 	public void cerrar(ActionEvent event) {
 		Platform.exit();
+	}
+	public ObservableList<ModelTable> oblist(){
+		ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+		oblist.removeAll(oblist);
+		oblist.add(new ModelTable("Hola", "Hola", "Hola", "Hola"));
+		oblist.add(new ModelTable("asd", "asd", "asd", "asd"));
+		
+		/*try {
+			String buscar = "SELECT * FROM Encontrados";
+			oblist = FXCollections.observableArrayList();
+			
+			Conexion con = new Conexion();
+			Connection conexionConnection = con.conectarConBase();
+			
+			ResultSet cant = conexionConnection.createStatement().executeQuery(buscar);
+			
+			oblist.add(new ModelTable("Hola", "Hola", "Hola", "Hola"));
+			oblist.add(new ModelTable("asd", "asd", "asd", "asd"));
+			
+			while(cant.next()) {
+				System.out.println(cant.getString("codigo"));
+				oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
+			}
+		}catch(Exception e) {
+			System.out.println("Error");			
+		}*/
+		
+		return oblist;
 	}
 }

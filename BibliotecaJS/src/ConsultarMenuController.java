@@ -218,8 +218,6 @@ public class ConsultarMenuController implements Initializable{
 		field_precio.setText(getPrecio());
 		field_notas.setText(getNotas());
 		
-		boolean sesion = logincontroller.VerificarSesion();
-		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
 				menu_login.setVisible(false);
@@ -256,67 +254,67 @@ public class ConsultarMenuController implements Initializable{
 	}
 	
 	public void setCodigo(String codigoSQL) {
-		this.codigo = codigoSQL;
+		ConsultarMenuController.codigo = codigoSQL;
 	}
 	public String getCodigo() {
 		return codigo;
 	}
 	public void setTitulo(String tituloSQL) {
-		this.titulo = tituloSQL;
+		ConsultarMenuController.titulo = tituloSQL;
 	}
 	public String getTitulo() {
 		return titulo;
 	}
 	public void setEditorial(String editorialSQL) {
-		this.editorial = editorialSQL;
+		ConsultarMenuController.editorial = editorialSQL;
 	}
 	public String getEditorial() {
 		return editorial;
 	}
 	public void setMaterial(String materialSQL) {
-		this.material = materialSQL;
+		ConsultarMenuController.material = materialSQL;
 	}
 	public String getMaterial() {
 		return material;
 	}
 	public void setPublicacion(String publicacionSQL) {
-		this.publicacion = publicacionSQL;
+		ConsultarMenuController.publicacion = publicacionSQL;
 	}
 	public String getPublicacion() {
 		return publicacion;
 	}
 	public void setCaducidad(String caducidadSQL) {
-		this.caducidad = caducidadSQL;
+		ConsultarMenuController.caducidad = caducidadSQL;
 	}
 	public String getCaducidad() {
 		return caducidad;
 	}
 	public void setTomo(String tomoSQL) {
-		this.tomo = tomoSQL;
+		ConsultarMenuController.tomo = tomoSQL;
 	}
 	public String getTomo() {
 		return tomo;
 	}
 	public void setPaginas(String paginasSQL) {
-		this.paginas = paginasSQL;
+		ConsultarMenuController.paginas = paginasSQL;
 	}
 	public String getPaginas() {
 		return paginas;
 	}
 	public void setPrecio(String precioSQL) {
-		this.precio = precioSQL;
+		ConsultarMenuController.precio = precioSQL;
 	}
 	public String getPrecio() {
 		return precio;
 	}
 	public void setNotas(String notasSQL) {
-		this.notas = notasSQL;
+		ConsultarMenuController.notas = notasSQL;
 	}
 	public String getNotas() {
 		return notas;
 	}
 	public void setAutor(String autorSQL) {
-		this.autor = autorSQL;
+		ConsultarMenuController.autor = autorSQL;
 	}
 	public String getAutor() {
 		return autor;

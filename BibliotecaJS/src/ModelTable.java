@@ -4,10 +4,10 @@ public class ModelTable {
 	static String codigo, titulo, autor, tipo;
 
 	public ModelTable(String codigo, String titulo, String autor, String tipo) {
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.autor = autor;
-		this.tipo = tipo;
+		ModelTable.codigo = codigo;
+		ModelTable.titulo = titulo;
+		ModelTable.autor = autor;
+		ModelTable.tipo = tipo;
 	}
 
 	public static String getCodigo() {

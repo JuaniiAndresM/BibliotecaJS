@@ -4,7 +4,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -178,7 +177,7 @@ public class ModificarController implements Initializable {
 			    + " tomo = '"+tomo+"', paginas = '"+paginas+"', precio = '"+precio+"', notas = '"+notas+"', autor = '"+autor+"'WHERE codigo ='"+codigoLibro+"'";
 			            	
 			    Statement stmt2 = conexionConnection.createStatement();
-				int cant2 = stmt2.executeUpdate(archivoInsert);
+				stmt2.executeUpdate(archivoInsert);
 				
 				lbl_exito.setVisible(true);
 				lbl_error.setVisible(false);        						
@@ -303,8 +302,6 @@ public class ModificarController implements Initializable {
 		field_notas.setText(getNotas());
 		field_autor.setText(getAutor());
 		
-		boolean sesion = logincontroller.VerificarSesion();
-		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
 				menu_login.setVisible(false);
@@ -341,67 +338,67 @@ public class ModificarController implements Initializable {
 	}
 	
 	public void setCodigo(String codigoSQL) {
-		this.codigo = codigoSQL;
+		ModificarController.codigo = codigoSQL;
 	}
 	public String getCodigo() {
 		return codigo;
 	}
 	public void setTitulo(String tituloSQL) {
-		this.titulo = tituloSQL;
+		ModificarController.titulo = tituloSQL;
 	}
 	public String getTitulo() {
 		return titulo;
 	}
 	public void setEditorial(String editorialSQL) {
-		this.editorial = editorialSQL;
+		ModificarController.editorial = editorialSQL;
 	}
 	public String getEditorial() {
 		return editorial;
 	}
 	public void setMaterial(String materialSQL) {
-		this.material = materialSQL;
+		ModificarController.material = materialSQL;
 	}
 	public String getMaterial() {
 		return material;
 	}
 	public void setPublicacion(String publicacionSQL) {
-		this.publicacion = publicacionSQL;
+		ModificarController.publicacion = publicacionSQL;
 	}
 	public String getPublicacion() {
 		return publicacion;
 	}
 	public void setCaducidad(String caducidadSQL) {
-		this.caducidad = caducidadSQL;
+		ModificarController.caducidad = caducidadSQL;
 	}
 	public String getCaducidad() {
 		return caducidad;
 	}
 	public void setTomo(String tomoSQL) {
-		this.tomo = tomoSQL;
+		ModificarController.tomo = tomoSQL;
 	}
 	public String getTomo() {
 		return tomo;
 	}
 	public void setPaginas(String paginasSQL) {
-		this.paginas = paginasSQL;
+		ModificarController.paginas = paginasSQL;
 	}
 	public String getPaginas() {
 		return paginas;
 	}
 	public void setPrecio(String precioSQL) {
-		this.precio = precioSQL;
+		ModificarController.precio = precioSQL;
 	}
 	public String getPrecio() {
 		return precio;
 	}
 	public void setNotas(String notasSQL) {
-		this.notas = notasSQL;
+		ModificarController.notas = notasSQL;
 	}
 	public String getNotas() {
 		return notas;
 	}
 	public void setAutor(String autorSQL) {
-		this.autor = autorSQL;
+		ModificarController.autor = autorSQL;
 	}
 	public String getAutor() {
 		return autor;
