@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class LoginController{
 	public static boolean sesion = false;
     public static boolean admin = false;
-
+    public static String nombre;
     @FXML
     private JFXButton btn_atras;
 	@FXML
@@ -86,6 +86,7 @@ public class LoginController{
             			else {
             				setAdmin(false);
             			}
+            			setNombre(cant.getString("nombre"));
             			encontrado = true;
             			setSesion(true);
             			VerificarSesion();
@@ -94,7 +95,7 @@ public class LoginController{
             	        Scene scene = new Scene(main);
             	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             	        window.setScene(scene);
-            	        window.show();        			
+            	        window.show();   			
             		}
             	}
             }
@@ -116,5 +117,11 @@ public class LoginController{
     }
     public boolean VerificarSesion(){
     	return LoginController.sesion;
+    }
+    public String getNombre() {
+    	return nombre;
+    }
+    public void setNombre(String nombre) {
+    	LoginController.nombre = nombre;
     }
 }

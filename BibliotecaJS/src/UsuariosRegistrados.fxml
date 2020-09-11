@@ -4,36 +4,27 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UsuariosRegistradosController">
    <children>
-      <SplitPane prefHeight="536.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+      <SplitPane prefHeight="483.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="183.0" style="-fx-background-color: white;">
                <children>
-                  <Pane layoutX="-4.0" prefHeight="101.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" AnchorPane.bottomAnchor="433.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="328.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="316.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
-                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
-                        <ImageView fitHeight="62.0" fitWidth="49.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/Logo.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutY="101.0" prefHeight="441.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
+                  <Label layoutX="403.0" layoutY="108.0" text="Usuarios" textFill="#0077ff">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btn_admin" layoutX="482.0" layoutY="399.0" onAction="#admin" prefHeight="42.0" prefWidth="171.0" style="-fx-background-color: #0077ff;" text="Cambiar a Administrador" textFill="WHITE" />
+                  <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
@@ -83,7 +74,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="384.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -95,7 +86,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="384.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="331.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -141,30 +132,37 @@
                                     <Image url="@icons/Registrar.png" />
                                  </image>
                               </ImageView>
-                           </graphic></JFXButton>
-                        <JFXButton fx:id="menu_usuarios" layoutX="4.0" layoutY="315.0" onAction="#menu_usuarios" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Administrar Usuarios" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <image>
-                                    <Image url="@icons/Usuarios.png" />
-                                 </image>
-                              </ImageView>
                            </graphic>
                         </JFXButton>
                      </children>
                   </Pane>
+                  <Pane layoutX="-4.0" prefHeight="108.0" prefWidth="761.0" style="-fx-background-color: #0077ff;">
+                     <children>
+                        <Label layoutX="328.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="316.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
+                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
+                        <ImageView fitHeight="62.0" fitWidth="49.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="table_buscar" layoutX="199.0" layoutY="170.0" prefHeight="200.0" prefWidth="545.0">
+                     <columns>
+                        <TableColumn fx:id="col_nombre" minWidth="0.0" prefWidth="378.0" text="Nombre" />
+                        <TableColumn fx:id="col_tipo" minWidth="0.0" prefWidth="166.0" text="Tipo" />
+                     </columns>
+                  </TableView>
+                  <JFXButton fx:id="btn_bibliotecario" layoutX="291.0" layoutY="399.0" onAction="#bibliotecario" prefHeight="42.0" prefWidth="171.0" style="-fx-background-color: #0077ff;" text="Cambiar a Bibliotecario" textFill="WHITE" />
+                  <Label fx:id="lbl_error" layoutX="317.0" layoutY="149.0" text="No puedes cambiar tu cuenta de Administrador actual." textFill="RED" visible="false" />
                </children>
             </AnchorPane>
          </items>
       </SplitPane>
-      <Label layoutX="385.0" layoutY="240.0" text="Biblioteca J.S" textFill="#5b5b5b">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Text fill="#5b5b5b" layoutX="275.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biblioteca J.S es una aplicación donde se pueden almacenar diferentes tipos de archivos, tales como: libros, documentos, facturas, etc." wrappingWidth="424.494140625" />
    </children>
 </AnchorPane>

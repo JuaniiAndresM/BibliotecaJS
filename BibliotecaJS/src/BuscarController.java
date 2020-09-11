@@ -152,8 +152,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String tituloEncontrado = cant2.getString("titulo");
-						resultado += " titulo ='" + tituloEncontrado + "'";
+						String tituloEncontrado = cant2.getString("codigo");
+						resultado += " codigo ='" + tituloEncontrado + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -167,8 +167,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String autorEncontrado = cant2.getString("autor");
-						resultado += " autor ='" + autorEncontrado + "'";
+						String autorEncontrado = cant2.getString("codigo");
+						resultado += " codigo ='" + autorEncontrado + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -182,8 +182,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String fechaEncontrada = cant2.getString("fecha_publicacion");
-						resultado += " fecha_publicacion ='" + fechaEncontrada + "'";
+						String fechaEncontrada = cant2.getString("codigo");
+						resultado += " codigo ='" + fechaEncontrada + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -197,8 +197,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String editorialEncontrada = cant2.getString("editorial");
-						resultado += " editorial ='" + editorialEncontrada + "'";
+						String editorialEncontrada = cant2.getString("codigo");
+						resultado += " codigo ='" + editorialEncontrada + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -212,8 +212,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						String tomoEncontrado = cant2.getString("tomo");
-						resultado += " tomo ='" + tomoEncontrado + "'";
+						String tomoEncontrado = cant2.getString("codigo");
+						resultado += " codigo ='" + tomoEncontrado + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -227,7 +227,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						resultado += " paginas <= " + paginas + "";
+						String paginasEncontradas = cant2.getString("codigo");
+						resultado += " codigo = " + paginasEncontradas + "";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -241,7 +242,8 @@ public class BuscarController implements Initializable {
 							resultado += " AND";
 						}
 						encontrado = true;
-						resultado += " precio <= " + precio + "";
+						String precioEncontrado = cant2.getString("codigo");
+						resultado += " codigo = " + precioEncontrado + "";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -253,7 +255,8 @@ public class BuscarController implements Initializable {
 					ResultSet cant3 = stmt3.executeQuery(resultado);
 					continuar = true;
 					System.out.println(resultado);
-					
+
+
 					while(cant3.next()) {						
 						String ingresar = "INSERT INTO Encontrados (codigo, titulo, editorial, tipo_material, fecha_publicacion,"
 								+ " fecha_caducidad, tomo, paginas, precio, notas, autor) "

@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -11,6 +10,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,10 +20,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class BuscarListaController implements Initializable {
 	LoginController logincontroller = new LoginController();
+	InfoBuscarController ibc = new InfoBuscarController();
 
 	static String codigo;
 
@@ -76,8 +78,16 @@ public class BuscarListaController implements Initializable {
 	private TableColumn<ModelTable, String> col_tipo;
 
 	@FXML
-	void buscar(ActionEvent event) {
+	void buscar(ActionEvent event) throws IOException {
+		System.out.println("Codigo Enviado: " +table_buscar.getSelectionModel().getSelectedItem().getCodigo());
+		ibc.setCodigo(table_buscar.getSelectionModel().getSelectedItem().getCodigo());
+		
+		Parent infobuscar = FXMLLoader.load(getClass().getResource("InfoBuscar.fxml"));
 
+		Scene scene = new Scene(infobuscar);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 	}
 
 	@FXML
@@ -235,10 +245,8 @@ public class BuscarListaController implements Initializable {
 	public ObservableList<ModelTable> oblist(){
 		ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 		oblist.removeAll(oblist);
-		oblist.add(new ModelTable("Hola", "Hola", "Hola", "Hola"));
-		oblist.add(new ModelTable("asd", "asd", "asd", "asd"));
 		
-		/*try {
+		try {
 			String buscar = "SELECT * FROM Encontrados";
 			oblist = FXCollections.observableArrayList();
 			
@@ -247,16 +255,13 @@ public class BuscarListaController implements Initializable {
 			
 			ResultSet cant = conexionConnection.createStatement().executeQuery(buscar);
 			
-			oblist.add(new ModelTable("Hola", "Hola", "Hola", "Hola"));
-			oblist.add(new ModelTable("asd", "asd", "asd", "asd"));
-			
 			while(cant.next()) {
 				System.out.println(cant.getString("codigo"));
 				oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
 			}
 		}catch(Exception e) {
 			System.out.println("Error");			
-		}*/
+		}
 		
 		return oblist;
 	}
