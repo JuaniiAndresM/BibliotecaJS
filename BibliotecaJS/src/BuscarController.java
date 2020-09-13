@@ -87,6 +87,9 @@ public class BuscarController implements Initializable {
 
 	@FXML
 	private JFXButton btn_buscar;
+	
+	@FXML
+	private JFXButton menu_configuracion;
 
 	@FXML
 	public void buscar(ActionEvent event) throws IOException, SQLException {
@@ -368,7 +371,15 @@ public class BuscarController implements Initializable {
 		window.setScene(scene);
 		window.show();
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
 
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	// Event Listener on Button[#btn_login].onAction
 	@FXML
 	public void login(ActionEvent event) throws IOException {
@@ -413,6 +424,7 @@ public class BuscarController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			} else {
 				menu_login.setVisible(false);
 				menu_cerrarsesion.setVisible(true);
@@ -421,6 +433,7 @@ public class BuscarController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 		} else {
 			menu_login.setVisible(true);
@@ -430,6 +443,7 @@ public class BuscarController implements Initializable {
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 
 	}

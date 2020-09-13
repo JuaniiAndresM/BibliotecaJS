@@ -134,6 +134,18 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
+                        <JFXButton fx:id="menu_configuracion" layoutX="4.0" layoutY="315.0" onAction="#menu_configuracion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Configuración" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Config.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </Pane>
                   <Label fx:id="lbl_error" layoutX="387.0" layoutY="165.0" text="El código del archivo ya existe." textFill="RED" visible="false" />

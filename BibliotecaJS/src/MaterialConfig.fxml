@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MaterialConfigController">
+   <children>
+      <SplitPane prefHeight="465.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="183.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="243.0" layoutY="113.0" text="Tipo de Material:" textFill="#0077ff">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btn_eliminar" layoutX="422.0" layoutY="321.0" onAction="#eliminar" prefHeight="42.0" prefWidth="290.0" style="-fx-background-color: #0077ff;" text="Eliminar" textFill="WHITE" />
+                  <Pane layoutX="-4.0" prefHeight="108.0" prefWidth="761.0" style="-fx-background-color: #0077ff;">
+                     <children>
+                        <Label layoutX="328.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="316.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
+                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
+                        <ImageView fitHeight="62.0" fitWidth="49.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Logo.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="menu_atras" layoutX="14.0" layoutY="33.0" onAction="#menu_atras" prefHeight="43.0" prefWidth="92.0" style="-fx-background-color: #0077ff;" text="Atras" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Login.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="table_buscar" layoutX="46.0" layoutY="176.0" prefHeight="268.0" prefWidth="350.0">
+                     <columns>
+                        <TableColumn fx:id="col_tipo" prefWidth="349.0" text="Tipo de Material" />
+                     </columns>
+                  </TableView>
+                  <JFXTextField fx:id="field_tipo" focusColor="#0077ff" labelFloat="true" layoutX="419.0" layoutY="189.0" prefHeight="36.0" prefWidth="290.0" promptText="Tipo de Material:" unFocusColor="#acacac" />
+                  <JFXButton fx:id="btn_modificar" layoutX="417.0" layoutY="233.0" onAction="#modificar" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: #0077ff;" text="Modificar" textFill="WHITE" />
+                  <JFXButton fx:id="btn_añadir" layoutX="576.0" layoutY="233.0" onAction="#añadir" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: #0077ff;" text="Añadir" textFill="WHITE" />
+                  <Label layoutX="442.0" layoutY="294.0" text="Seleccionar una opción de la lista y eliminarla." textFill="#0077ff" />
+                  <Label fx:id="lbl_existe" layoutX="490.0" layoutY="427.0" text="El tipo de material ya existe." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_exitoborrar" layoutX="446.0" layoutY="427.0" text="El tipo de material se elimino correctamente." textFill="#0077ff" visible="false" />
+                  <Label fx:id="lbl_exitoagregar" layoutX="450.0" layoutY="427.0" text="El tipo de material se agrego correctamente." textFill="#0077ff" visible="false" />
+                  <Label fx:id="lbl_exitoeditar" layoutX="452.0" layoutY="427.0" text="El tipo de material se editó correctamente." textFill="#0077ff" visible="false" />
+                  <Label layoutX="548.0" layoutY="377.0" text="Incluir:" textFill="#0077ff" />
+                  <JFXCheckBox fx:id="check_paginas" checkedColor="#0077ff" layoutX="452.0" layoutY="403.0" text="Páginas" unCheckedColor="#acacac" />
+                  <JFXCheckBox fx:id="check_tomo" checkedColor="#0077ff" layoutX="538.0" layoutY="403.0" text="Tomo" unCheckedColor="#acacac" />
+                  <JFXCheckBox fx:id="check_precio" checkedColor="#0077ff" layoutX="615.0" layoutY="403.0" text="Precio" unCheckedColor="#acacac" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -10,7 +10,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class BuscarListaController implements Initializable {
@@ -61,7 +59,10 @@ public class BuscarListaController implements Initializable {
 
 	@FXML
 	private JFXButton btn_cerrar;
-
+	
+	@FXML
+	private JFXButton menu_configuracion;
+	
 	@FXML
 	private TableView<ModelTable> table_buscar;
 
@@ -194,6 +195,15 @@ public class BuscarListaController implements Initializable {
 		window.show();
 
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	static ObservableList<ModelTable> oblist;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -214,6 +224,7 @@ public class BuscarListaController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -223,9 +234,7 @@ public class BuscarListaController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
-				
-				menu_login.setVisible(false);
-				menu_cerrarsesion.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -236,6 +245,7 @@ public class BuscarListaController implements Initializable {
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 	}
 

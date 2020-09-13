@@ -31,6 +31,9 @@ public class ConsultarController implements Initializable{
 
     @FXML
     private JFXButton btn_consultar;
+    
+    @FXML 
+    private JFXButton menu_configuracion;
 
     @FXML
     private Text lbl_error;
@@ -206,6 +209,15 @@ public class ConsultarController implements Initializable{
         window.show();
 		
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -218,6 +230,7 @@ public class ConsultarController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -227,6 +240,7 @@ public class ConsultarController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -237,6 +251,7 @@ public class ConsultarController implements Initializable{
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 		
 	}

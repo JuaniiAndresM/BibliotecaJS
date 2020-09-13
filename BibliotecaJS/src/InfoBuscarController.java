@@ -26,7 +26,10 @@ public class InfoBuscarController implements Initializable{
 
     @FXML
     private JFXTextField field_codigo;
-
+    
+    @FXML
+    private JFXButton menu_configuracion;
+    
     @FXML
     private JFXButton menu_consultar;
 
@@ -183,6 +186,15 @@ public class InfoBuscarController implements Initializable{
         window.show();
 		
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -236,6 +248,7 @@ public class InfoBuscarController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -245,6 +258,7 @@ public class InfoBuscarController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -255,6 +269,7 @@ public class InfoBuscarController implements Initializable{
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 		
 	}

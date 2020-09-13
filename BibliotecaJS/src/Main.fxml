@@ -142,29 +142,29 @@
                                  </image>
                               </ImageView>
                            </graphic></JFXButton>
-                        <JFXButton fx:id="menu_usuarios" layoutX="4.0" layoutY="315.0" onAction="#menu_usuarios" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Administrar Usuarios" textFill="WHITE">
+                        <JFXButton fx:id="menu_configuracion" layoutX="4.0" layoutY="315.0" onAction="#menu_configuracion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Configuración" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <image>
-                                    <Image url="@icons/Usuarios.png" />
+                                    <Image url="@icons/Config.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
                      </children>
                   </Pane>
+                  <Label layoutX="378.0" layoutY="267.0" text="Biblioteca J.S" textFill="#5b5b5b">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Text fill="#5b5b5b" layoutX="268.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biblioteca J.S es una aplicación donde se pueden almacenar diferentes tipos de archivos, tales como: libros, documentos, facturas, etc." wrappingWidth="424.494140625" />
                </children>
             </AnchorPane>
          </items>
       </SplitPane>
-      <Label layoutX="385.0" layoutY="240.0" text="Biblioteca J.S" textFill="#5b5b5b">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Text fill="#5b5b5b" layoutX="275.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biblioteca J.S es una aplicación donde se pueden almacenar diferentes tipos de archivos, tales como: libros, documentos, facturas, etc." wrappingWidth="424.494140625" />
    </children>
 </AnchorPane>

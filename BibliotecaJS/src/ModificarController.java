@@ -43,6 +43,10 @@ public class ModificarController implements Initializable {
 	@FXML
 	private JFXButton button_modificar;
 	@FXML
+	private JFXButton menu_configuracion;
+	@FXML
+	private JFXButton button_reset;
+	@FXML
 	private TextArea field_notas;
 	@FXML
 	private JFXDatePicker date_caducidad;
@@ -191,6 +195,10 @@ public class ModificarController implements Initializable {
 	}
 	// Event Listener on Button[#menu_buscar].onAction
 	@FXML
+	public void reset(ActionEvent event) {
+		date_caducidad.setValue(null);
+	}
+	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		
@@ -287,6 +295,15 @@ public class ModificarController implements Initializable {
         window.show();
 		
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		codigoLibro = Integer.parseInt(getCodigo());
@@ -311,6 +328,7 @@ public class ModificarController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -320,6 +338,7 @@ public class ModificarController implements Initializable {
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -330,6 +349,7 @@ public class ModificarController implements Initializable {
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 		
 	}

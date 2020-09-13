@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConfiguracionController">
+   <children>
+      <SplitPane prefHeight="536.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="183.0" style="-fx-background-color: white;">
+               <children>
+                  <Pane layoutX="-4.0" prefHeight="107.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" AnchorPane.bottomAnchor="427.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="328.0" layoutY="24.0" text="Biblioteca J.S" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="316.0" layoutY="68.0" text="Aplicación de Almacenamiento de Archivos" textFill="WHITE" />
+                        <JFXButton fx:id="btn_cerrar" layoutX="723.0" layoutY="24.0" onAction="#cerrar" style="-fx-background-color: #0077ff;" text="X" textFill="WHITE" />
+                        <ImageView fitHeight="62.0" fitWidth="49.0" layoutX="260.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Logo.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="menu_inicio" layoutX="14.0" layoutY="33.0" onAction="#menu_inicio" prefHeight="43.0" prefWidth="82.0" style="-fx-background-color: #0077ff;" text="Inicio" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Inicio.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <Label layoutX="265.0" layoutY="155.0" text="Configuración" textFill="#5b5b5b">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="-4.0" layoutY="433.0" prefHeight="101.0" prefWidth="761.0" style="-fx-background-color: #0077ff;" />
+                  <JFXButton fx:id="opcion_usuarios" layoutX="236.0" layoutY="218.0" onAction="#usuarios" prefHeight="77.0" prefWidth="281.0" style="-fx-background-color: #0077ff;" text="Administrar Usuarios" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@icons/Usuarios.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="opcion_material" layoutX="236.0" layoutY="303.0" onAction="#material" prefHeight="77.0" prefWidth="281.0" style="-fx-background-color: #0077ff;" text="Modificar Tipo de Material" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@icons/Modificar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

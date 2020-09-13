@@ -12,21 +12,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModificarMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModificarMenuController">
    <children>
-      <SplitPane prefHeight="483.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
+      <SplitPane prefHeight="523.0" prefWidth="755.0" style="-fx-background-color: #ffffff;">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="183.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="393.0" layoutY="201.0" text="Modificar" textFill="#0077ff">
+                  <Label layoutX="393.0" layoutY="218.0" text="Modificar" textFill="#0077ff">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="350.0" layoutY="254.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
-                  <JFXButton fx:id="btn_buscar" layoutX="417.0" layoutY="330.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
+                  <JFXTextField fx:id="field_codigo" focusColor="#0077ff" layoutX="350.0" layoutY="271.0" prefHeight="42.0" prefWidth="237.0" promptText="Código" unFocusColor="#ababab" />
+                  <JFXButton fx:id="btn_buscar" layoutX="417.0" layoutY="347.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
                   <Text fx:id="lbl_error" fill="RED" layoutX="376.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código del Archivo no encontrado." visible="false" />
-                  <Pane layoutY="101.0" prefHeight="388.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
+                  <Pane layoutY="101.0" prefHeight="428.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
                            <graphic>
@@ -76,7 +76,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="331.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
+                        <JFXButton fx:id="menu_login" layoutX="4.0" layoutY="371.0" onAction="#login" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Iniciar Sesión" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -88,7 +88,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="331.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
+                        <JFXButton fx:id="menu_cerrarsesion" layoutX="4.0" layoutY="371.0" onAction="#menu_cerrarsesion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Cerrar Sesión" textFill="WHITE" visible="false">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <cursor>
@@ -132,6 +132,18 @@
                                  </cursor>
                                  <image>
                                     <Image url="@icons/Registrar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="menu_configuracion" layoutX="4.0" layoutY="315.0" onAction="#menu_configuracion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Configuración" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Config.png" />
                                  </image>
                               </ImageView>
                            </graphic>

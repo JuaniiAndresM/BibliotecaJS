@@ -38,7 +38,7 @@ public class MainController implements Initializable{
 	@FXML
 	private Button btn_cerrar;
 	@FXML
-	private Button menu_usuarios;
+	private Button menu_configuracion;
 
 	// Event Listener on Button[#btn_buscar].onAction
 	@FXML
@@ -138,8 +138,8 @@ public class MainController implements Initializable{
 		
 	}
 	@FXML
-	public void menu_usuarios(ActionEvent event) throws IOException{
-		Parent login = FXMLLoader.load(getClass().getResource("UsuariosRegistrados.fxml"));
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
 
         Scene scene = new Scene(login);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -158,7 +158,7 @@ public class MainController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
-				menu_usuarios.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -168,7 +168,7 @@ public class MainController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
-				menu_usuarios.setVisible(false);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -179,7 +179,7 @@ public class MainController implements Initializable{
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
-			menu_usuarios.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 		
 	}

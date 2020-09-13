@@ -146,6 +146,18 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
+                        <JFXButton fx:id="menu_configuracion" layoutX="4.0" layoutY="315.0" onAction="#menu_configuracion" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Configuración" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <image>
+                                    <Image url="@icons/Config.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </Pane>
                   <Label fx:id="lbl_error" layoutX="387.0" layoutY="165.0" text="El código del archivo ya existe." textFill="RED" visible="false" />
@@ -169,7 +181,8 @@
                   <Label fx:id="lbl_errorcodigo" layoutX="387.0" layoutY="165.0" text="El código debe ser numerico." textFill="RED" visible="false" />
                   <Label fx:id="lbl_errorpaginas" layoutX="358.0" layoutY="165.0" text="El numero de paginas debe ser numerico." textFill="RED" visible="false" />
                   <Label fx:id="lbl_errorprecio" layoutX="389.0" layoutY="165.0" text="El precio debe ser numerico." textFill="RED" visible="false" />
-                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" editable="false" layoutX="214.0" layoutY="590.0" prefHeight="28.0" prefWidth="248.0" promptText="Fecha de Caducidad" />
+                  <JFXDatePicker fx:id="date_caducidad" defaultColor="#0077ff" editable="false" layoutX="294.0" layoutY="586.0" prefHeight="32.0" prefWidth="162.0" promptText="Fecha de Caducidad" />
+                  <JFXButton fx:id="button_reset" layoutX="220.0" layoutY="587.0" onAction="#reset" prefHeight="35.0" prefWidth="67.0" style="-fx-background-color: #0077ff;" text="Reset" textFill="WHITE" />
                </children>
             </AnchorPane>
          </items>

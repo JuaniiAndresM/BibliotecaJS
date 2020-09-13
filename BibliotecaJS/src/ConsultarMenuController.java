@@ -33,6 +33,9 @@ public class ConsultarMenuController implements Initializable{
 	
     @FXML
     private JFXButton btn_cerrar;
+    
+    @FXML
+    private JFXButton menu_configuracion;
 
     @FXML
     private JFXTextField field_codigo;
@@ -197,26 +200,63 @@ public class ConsultarMenuController implements Initializable{
         window.show();
 		
 	}
+	@FXML
+	public void menu_configuracion(ActionEvent event) throws IOException{
+		Parent login = FXMLLoader.load(getClass().getResource("Configuracion.fxml"));
+
+        Scene scene = new Scene(login);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		field_codigo.setText(getCodigo());
+		
 		field_titulo.setText(getTitulo());
-		field_editorial.setText(getEditorial());
+		
+		if(getEditorial().toString().equals("")) {
+			field_editorial.setText("No disponible");
+		}else {
+			field_editorial.setText(getEditorial());
+		}
 		field_material.setText(getMaterial());
-		field_publicacion.setText(getPublicacion());
-		field_autor.setText(getAutor());
+		if(getPublicacion().toString().equals("")) {
+			field_publicacion.setText("No disponible");
+		}else {
+			field_publicacion.setText(getPublicacion());
+		}
+		if(getAutor().toString().equals("null")) {
+			field_autor.setText("No disponible");
+		}else {
+			field_autor.setText(getAutor());
+		}
 		if(getCaducidad().toString().equals("null")) {
 			field_caducidad.setText("No disponible");
-		}
-		else {
+		}else {
 			field_caducidad.setText(getCaducidad());
 		}
-		
-		field_tomo.setText(getTomo());
-		field_paginas.setText(getPaginas());
-		field_precio.setText(getPrecio());
-		field_notas.setText(getNotas());
+		if(getTomo().toString().equals("")) {
+			field_tomo.setText("No disponible");
+		}else {
+			field_tomo.setText(getTomo());
+		}
+		if(getPaginas().toString().equals("0")) {
+			field_paginas.setText("No disponible");
+		}else {
+			field_paginas.setText(getPaginas());
+		}
+		if(getPrecio().toString().equals("0")) {
+			field_precio.setText("No disponible");
+		}else {
+			field_precio.setText(getPrecio());
+		}
+		if(getNotas().toString().equals("null")) {
+			field_notas.setText("No disponible");
+		}else {
+			field_notas.setText(getNotas());
+		}
 		
 		if(logincontroller.VerificarSesion() == true) {
 			if(logincontroller.VerificarAdmin() == true) {
@@ -227,6 +267,7 @@ public class ConsultarMenuController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(true);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(true);
 			}
 			else {
 				menu_login.setVisible(false);
@@ -236,6 +277,7 @@ public class ConsultarMenuController implements Initializable{
 				menu_agregar.setVisible(true);
 				menu_modificar.setVisible(false);
 				menu_consultar.setVisible(true);
+				menu_configuracion.setVisible(false);
 			}
 	}
 		else {
@@ -246,6 +288,7 @@ public class ConsultarMenuController implements Initializable{
 			menu_agregar.setVisible(false);
 			menu_modificar.setVisible(false);
 			menu_consultar.setVisible(false);
+			menu_configuracion.setVisible(false);
 		}
 		
 	}
