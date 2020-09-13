@@ -70,9 +70,9 @@ public class ModificarMenuController implements Initializable {
     	
     	int codigo = Integer.parseInt(field_codigo.getText());
     	
-   	 ModificarController mc = new ModificarController();
+   	 	ModificarController mc = new ModificarController();
    	 
-   	 Conexion con = new Conexion();
+   	 	Conexion con = new Conexion();
         Connection conexionConnection = con.conectarConBase();
         
         try {
@@ -94,21 +94,21 @@ public class ModificarMenuController implements Initializable {
             		mc.setPrecio(cant.getString("precio"));
             		mc.setNotas(cant.getString("notas"));
             		mc.setAutor(cant.getString("autor"));
-            		
             		encontrado = true;
             		
-            	Parent consultar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
-           		
-           		Scene scene = new Scene(consultar);
-           		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-           		window.setScene(scene);
-           		window.show();
+	            	Parent consultar = FXMLLoader.load(getClass().getResource("Modificar.fxml"));
+	           		
+	           		Scene scene = new Scene(consultar);
+	           		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	           		window.setScene(scene);
+	           		window.show();
             	}
             }
             if(encontrado == false) {
             	lbl_error.setVisible(true);
             }
-        }catch(Exception e) {
+        }catch(SQLException e) {
+        	System.out.println("Error");
         }
     }
 

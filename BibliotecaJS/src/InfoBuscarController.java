@@ -207,11 +207,8 @@ public class InfoBuscarController implements Initializable{
 			ResultSet cant = stmt.executeQuery(buscar);
 			
 			while(cant.next()) {
-				System.out.println("Codigo Entrante: " + codigo);
-				System.out.println("Codigo Encontrado: " + cant.getString("codigo"));
 				
 				if(codigo.equals(cant.getString("codigo"))) {
-					System.out.println("Entra");
 					field_codigo.setText(cant.getString("codigo"));
 					field_titulo.setText(cant.getString("titulo"));
 					if(cant.getString("editorial").toString().equals("null")){

@@ -111,12 +111,10 @@ public class AgregarController implements Initializable {
 		try {
 			codigo = Integer.parseInt(this.field_codigo.getText());
 			try {
-				System.out.println("Paginas: " + paginasSelect);
 				if(paginasSelect == true) {
 					paginas = Integer.parseInt(this.field_paginas.getText());
 				}
 				try {
-					System.out.println("Precio: " + precioSelect);
 					if(precioSelect == true) {
 						precio = Integer.parseInt(this.field_precio.getText());
 					}
@@ -166,8 +164,7 @@ public class AgregarController implements Initializable {
 				}
 				if (encontrado == false) {
 
-					String archivoInsert;
-					archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas, autor)"
+					String archivoInsert = "INSERT INTO Archivos (codigo, titulo, editorial, tipo_material, fecha_publicacion, fecha_caducidad, tomo, paginas, precio, notas, autor)"
 							+ "values(" + " '" + codigo + "'," + " '" + titulo + "'," + " '" + editorial + "'," + " '"
 							+ tipo + "'," + " '" + publicacion + "'," + " '" + caducidad + "'," + " '" + tomo + "',"
 							+ " '" + paginas + "'," + " '" + precio + "'," + " '" + notas + "'," + " '" + autor + "'"
@@ -429,7 +426,6 @@ public class AgregarController implements Initializable {
 
 	public ObservableList<String> opciones() {
 		ObservableList<String> opciones = FXCollections.observableArrayList();
-		opciones.removeAll(opciones);
 
 		try {
 			String buscar = "SELECT * FROM tipodemateriales";

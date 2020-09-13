@@ -24,14 +24,21 @@
                      </font>
                   </Label>
                   <JFXTextField fx:id="field_titulo" focusColor="#0077ff" labelFloat="true" layoutX="226.0" layoutY="195.0" prefHeight="28.0" prefWidth="237.0" promptText="Titulo" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_autor" focusColor="#0077ff" labelFloat="true" layoutX="226.0" layoutY="249.0" prefHeight="28.0" prefWidth="237.0" promptText="Autor" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_publicacion" focusColor="#0077ff" labelFloat="true" layoutX="226.0" layoutY="309.0" prefHeight="28.0" prefWidth="237.0" promptText="Fecha de la Publicación" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_autor" focusColor="#0077ff" labelFloat="true" layoutX="226.0" layoutY="261.0" prefHeight="28.0" prefWidth="237.0" promptText="Autor" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_publicacion" focusColor="#0077ff" labelFloat="true" layoutX="225.0" layoutY="332.0" prefHeight="28.0" prefWidth="237.0" promptText="Fecha de la Publicación" unFocusColor="#ababab" />
                   <JFXTextField fx:id="field_editorial" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="195.0" prefHeight="28.0" prefWidth="237.0" promptText="Editorial" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_tomo" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="249.0" prefHeight="28.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_paginas" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="309.0" prefHeight="28.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
-                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="362.0" prefHeight="28.0" prefWidth="237.0" promptText="Precio" unFocusColor="#ababab" />
-                  <JFXButton fx:id="btn_buscar" layoutX="409.0" layoutY="418.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE" />
-                  <Label layoutX="470.0" layoutY="368.0" text="\$" />
+                  <JFXTextField fx:id="field_tomo" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="261.0" prefHeight="28.0" prefWidth="237.0" promptText="Tomo" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_paginas" focusColor="#0077ff" labelFloat="true" layoutX="479.0" layoutY="332.0" prefHeight="28.0" prefWidth="237.0" promptText="Páginas" unFocusColor="#ababab" />
+                  <JFXTextField fx:id="field_precio" focusColor="#0077ff" labelFloat="true" layoutX="480.0" layoutY="404.0" prefHeight="28.0" prefWidth="237.0" promptText="Precio" unFocusColor="#ababab" />
+                  <JFXButton fx:id="btn_buscar" layoutX="411.0" layoutY="451.0" onAction="#buscar" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #0077ff;" text="Buscar" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="21.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Buscar.PNG" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <Label layoutX="470.0" layoutY="410.0" text="\$" />
                   <Pane layoutY="101.0" prefHeight="428.0" prefWidth="190.0" style="-fx-background-color: #0077ff;">
                      <children>
                         <JFXButton fx:id="menu_consultar" layoutX="4.0" layoutY="100.0" onAction="#menu_consultar" prefHeight="43.0" prefWidth="182.0" style="-fx-background-color: #0077ff;" text="Consultar" textFill="WHITE">
@@ -172,8 +179,9 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <JFXDatePicker fx:id="field_caducidad" defaultColor="#0077ff" editable="false" layoutX="226.0" layoutY="360.0" prefHeight="32.0" prefWidth="237.0" promptText="Fecha de Caducidad" />
                   <Label fx:id="lbl_error" layoutX="408.0" layoutY="152.0" text="No se encontró el libro." textFill="RED" visible="false" />
+                  <JFXDatePicker fx:id="field_caducidad" defaultColor="#0077ff" editable="false" layoutX="300.0" layoutY="401.0" prefHeight="32.0" prefWidth="162.0" promptText="Fecha de Caducidad" />
+                  <JFXButton fx:id="button_reset" layoutX="226.0" layoutY="402.0" onAction="#reset" prefHeight="35.0" prefWidth="67.0" style="-fx-background-color: #0077ff;" text="Reset" textFill="WHITE" />
                </children>
             </AnchorPane>
          </items>

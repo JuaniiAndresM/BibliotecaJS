@@ -59,7 +59,9 @@
                      </columns>
                   </TableView>
                   <JFXButton fx:id="btn_bibliotecario" layoutX="196.0" layoutY="407.0" onAction="#bibliotecario" prefHeight="42.0" prefWidth="171.0" style="-fx-background-color: #0077ff;" text="Cambiar a Bibliotecario" textFill="WHITE" />
-                  <Label fx:id="lbl_error" layoutX="317.0" layoutY="149.0" text="No puedes cambiar tu cuenta de Administrador actual." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_error" layoutX="232.0" layoutY="384.0" text="No puedes cambiar tu cuenta de Administrador actual." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_admin" layoutX="295.0" layoutY="384.0" text="El usuario ya es Administrador." textFill="RED" visible="false" />
+                  <Label fx:id="lbl_bibliotecario" layoutX="300.0" layoutY="384.0" text="El usuario ya es Bibliotecario." textFill="RED" visible="false" />
                </children>
             </AnchorPane>
          </items>

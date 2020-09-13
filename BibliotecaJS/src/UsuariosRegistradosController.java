@@ -34,6 +34,12 @@ public class UsuariosRegistradosController implements Initializable {
     private Label lbl_error;
     
     @FXML
+    private Label lbl_admin;
+    
+    @FXML
+    private Label lbl_bibliotecario;
+    
+    @FXML
     private JFXButton menu_atras;
 
     @FXML
@@ -56,6 +62,10 @@ public class UsuariosRegistradosController implements Initializable {
 	
     @FXML
     void admin(ActionEvent event) throws IOException, SQLException {
+    	
+    	lbl_error.setVisible(false);
+    	lbl_admin.setVisible(false);
+    	lbl_bibliotecario.setVisible(false);
 		
     	String usuario = table_buscar.getSelectionModel().getSelectedItem().getNombre();
     	
@@ -66,32 +76,39 @@ public class UsuariosRegistradosController implements Initializable {
 		try {
 			while(cant.next()) {
 				if(usuario.equals(cant.getString("nombre")) && !usuario.equals(logincontroller.getNombre())) {
-					String update = "UPDATE Usuarios SET admin ='1' WHERE id = '" +cant.getString("id")+ "'";
+					if(cant.getString("admin").equals("1")) {
+						lbl_admin.setVisible(true);
+					}
+					else {
+						String update = "UPDATE Usuarios SET admin ='1' WHERE id = '" +cant.getString("id")+ "'";
 					
-					System.out.println(update);
-					Statement stmt2 = conexionConnection.createStatement();
-					stmt2.executeUpdate(update);
+						System.out.println(update);
+						Statement stmt2 = conexionConnection.createStatement();
+						stmt2.executeUpdate(update);
+						lbl_admin.setVisible(false);
+					}
+					
 					
 				}
 				if(usuario.equals(logincontroller.getNombre())) {
 					lbl_error.setVisible(true);
+					lbl_admin.setVisible(false);
 				}
 			}
 		}catch(SQLException e) {
 			System.out.println("Error");
 		}
 		
-		Parent infobuscar = FXMLLoader.load(getClass().getResource("UsuariosRegistrados.fxml"));
-
-		Scene scene = new Scene(infobuscar);
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+		table_buscar.setItems(oblist());
 
     }
 
     @FXML
     void bibliotecario(ActionEvent event) throws SQLException, IOException {
+    	
+    	lbl_error.setVisible(false);
+    	lbl_admin.setVisible(false);
+    	lbl_bibliotecario.setVisible(false);
 		
     	String usuario = table_buscar.getSelectionModel().getSelectedItem().getNombre();
     	
@@ -103,26 +120,27 @@ public class UsuariosRegistradosController implements Initializable {
 			while(cant.next()) {
 				
 				if(usuario.equals(cant.getString("nombre")) && !usuario.equals(logincontroller.getNombre())) {
-					
-					String update = "UPDATE Usuarios SET admin ='0' WHERE id = '" +cant.getString("id")+ "'";
-					System.out.println(update);
-					Statement stmt2 = conexionConnection.createStatement();
-					stmt2.executeUpdate(update);
+					if(cant.getString("admin").equals("0")) {
+						lbl_bibliotecario.setVisible(true);
+					}
+					else {
+						String update = "UPDATE Usuarios SET admin ='0' WHERE id = '" +cant.getString("id")+ "'";
+						System.out.println(update);
+						Statement stmt2 = conexionConnection.createStatement();
+						stmt2.executeUpdate(update);
+						lbl_bibliotecario.setVisible(false);
+					}
 				}
 				if(usuario.equals(logincontroller.getNombre())) {
 					lbl_error.setVisible(true);
+					lbl_bibliotecario.setVisible(false);
 				}
 			}
 		}catch(SQLException e) {
 			System.out.println("Error");
 		}
 		
-		Parent infobuscar = FXMLLoader.load(getClass().getResource("UsuariosRegistrados.fxml"));
-
-		Scene scene = new Scene(infobuscar);
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+		table_buscar.setItems(oblist());
 
     }
 

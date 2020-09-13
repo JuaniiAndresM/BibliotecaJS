@@ -80,7 +80,6 @@ public class BuscarListaController implements Initializable {
 
 	@FXML
 	void buscar(ActionEvent event) throws IOException {
-		System.out.println("Codigo Enviado: " +table_buscar.getSelectionModel().getSelectedItem().getCodigo());
 		ibc.setCodigo(table_buscar.getSelectionModel().getSelectedItem().getCodigo());
 		
 		Parent infobuscar = FXMLLoader.load(getClass().getResource("InfoBuscar.fxml"));
@@ -266,7 +265,6 @@ public class BuscarListaController implements Initializable {
 			ResultSet cant = conexionConnection.createStatement().executeQuery(buscar);
 			
 			while(cant.next()) {
-				System.out.println(cant.getString("codigo"));
 				oblist.add(new ModelTable(cant.getString("codigo"), cant.getString("titulo"), cant.getString("autor"), cant.getString("tipo_material")));
 			}
 		}catch(Exception e) {

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
@@ -27,6 +28,9 @@ public class BuscarController implements Initializable {
 	
 	@FXML
 	private Label lbl_error;
+	
+	@FXML
+	private JFXButton button_reset;
 	
 	@FXML
 	private JFXButton btn_cerrar;
@@ -57,7 +61,7 @@ public class BuscarController implements Initializable {
 
 	@FXML
 	private JFXButton menu_buscar;
-
+	
 	@FXML
 	private JFXTextField field_titulo;
 
@@ -91,10 +95,11 @@ public class BuscarController implements Initializable {
 	@FXML
 	private JFXButton menu_configuracion;
 
+	@SuppressWarnings("unlikely-arg-type")
 	@FXML
 	public void buscar(ActionEvent event) throws IOException, SQLException {
-		boolean ingresoTitulo, ingresoAutor, ingresoFecha, ingresoEditorial, ingresoTomo, ingresoPaginas, ingresoPrecio;
-		ingresoTitulo = ingresoAutor = ingresoFecha = ingresoEditorial = ingresoTomo = ingresoPaginas = ingresoPrecio = false;
+		boolean ingresoTitulo, ingresoAutor, ingresoFecha, ingresoEditorial, ingresoTomo, ingresoPaginas, ingresoPrecio, ingresoCaducidad;
+		ingresoTitulo = ingresoAutor = ingresoFecha = ingresoEditorial = ingresoTomo = ingresoPaginas = ingresoPrecio = ingresoCaducidad = false;
 
 		String titulo = field_titulo.getText();
 		if (!titulo.equals("")) {
@@ -123,6 +128,10 @@ public class BuscarController implements Initializable {
 		String precio = field_precio.getText();
 		if (!precio.equals("")) {
 			ingresoPrecio = true;
+		}
+		LocalDate caducidad = field_caducidad.getValue();
+		if(caducidad != null){
+			ingresoCaducidad = true;
 		}
 
 		Conexion con = new Conexion();
@@ -187,6 +196,21 @@ public class BuscarController implements Initializable {
 						encontrado = true;
 						String fechaEncontrada = cant2.getString("codigo");
 						resultado += " codigo ='" + fechaEncontrada + "'";
+					}
+					else {
+						lbl_error.setVisible(true);
+						parametrosEncontrados = false;
+					}
+				}
+				if (ingresoCaducidad == true) {
+					if (caducidad.toString().equals(cant2.getString("fecha_caducidad"))) {
+						parametros++;
+						if(parametros > 1) {
+							resultado += " AND";
+						}
+						encontrado = true;
+						String caducidadEncontrada = cant2.getString("codigo");
+						resultado += " codigo ='" + caducidadEncontrada + "'";
 					}
 					else {
 						lbl_error.setVisible(true);
@@ -298,7 +322,10 @@ public class BuscarController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	@FXML
+	public void reset(ActionEvent event) {
+		field_caducidad.setValue(null);
+	}
 	@FXML
 	public void menu_inicio(ActionEvent event) throws IOException {
 		Parent menu = FXMLLoader.load(getClass().getResource("Main.fxml"));
